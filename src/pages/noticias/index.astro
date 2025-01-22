@@ -1,125 +1,116 @@
 ---
-// src/components/News.astro
-import { getNews } from "../services/newsService";
-import type { News } from "../types/news";
+// Importaciones necesarias
+import Layout from '../../layouts/Layout.astro';
+import type { News } from '../../types/news';
+import { getNews } from '../../services/newsService';
 
-// Parámetros de la página actual
-const currentPage = +(Astro.url.searchParams.get("page") || 1);
+// Parámetros de la página actual y límite por página
+const currentPage = +(Astro.url.searchParams.get('page') || 1);
 const limit = 6;
 
-// Obtener las noticias
+// Inicialización de datos
 let news: News[] = [];
 let totalPages = 1;
 let error = null;
 
 try {
-  const response = await getNews(currentPage, limit);
+  const response = await getNews(currentPage, limit); // Llamada al servicio de noticias
   news = response.data;
-  totalPages = Math.ceil(response.total / limit); // Calcular total de páginas basado en total de noticias
+  totalPages = response.totalPages;
 } catch (e) {
-  error = e;
+  error = e; // Manejo de errores
 }
 
-// Función helper para formatear fechas
+// Helper para formatear las fechas
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString("es-ES", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  return new Date(dateString).toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 };
 ---
 
-<section class="py-20 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-12">Noticias FUC</h2>
-
-    {
-      error && (
-        <div
-          class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-8"
-          role="alert"
-        >
+<Layout title="Noticias - FUC">
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Noticias FUC</h2>
+      
+      {error && (
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-8" role="alert">
           <p>Error al cargar las noticias. Por favor, intente más tarde.</p>
         </div>
-      )
-    }
+      )}
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        news.map((item) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {news.map((item) => (
           <article class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
             <div class="relative h-48">
-              <img
-                src="/placeholder-news.jpg"
-                alt={item.Titulo}
+              <img 
+                src="/placeholder-news.jpg" // Imagen predeterminada
+                alt={item.Titulo} 
                 class="w-full h-full object-cover"
               />
               <div class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 m-2 rounded-full text-sm">
-                {item.Categoria}
+                {item.Categoria || "General"}
               </div>
             </div>
-
             <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 line-clamp-2">{item.Titulo}</h3>
-
-              <p class="text-gray-600 mb-4 line-clamp-3">{item.Contenido}</p>
-
+              <h3 class="text-xl font-bold mb-2 line-clamp-2">
+                {item.Titulo}
+              </h3>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                {item.Contenido}
+              </p>
               <div class="flex justify-between items-center text-sm text-gray-500">
                 <span>{item.Autor}</span>
                 <span>{formatDate(item.Fecha_Publicacion)}</span>
               </div>
-
-              <a
-                href={`/noticias/${item.ID_Noticia}`}
+              <a 
+                href={`/noticias/${item.ID_Noticia}`} 
                 class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
               >
                 Leer más
               </a>
             </div>
           </article>
-        ))
-      }
-    </div>
+        ))}
+      </div>
 
-    {/* Paginación */}
-    {
-      totalPages > 1 && (
+      {totalPages > 1 && (
         <div class="mt-12 flex justify-center gap-2">
           {currentPage > 1 && (
-            <a
-              href={`?page=${currentPage - 1}`}
+            <a 
+              href={`?page=${currentPage - 1}`} 
               class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               Anterior
             </a>
           )}
-
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <a
-              href={`?page=${page}`}
+            <a 
+              href={`?page=${page}`} 
               class={`px-4 py-2 rounded-lg ${
-                currentPage === page
-                  ? "bg-red-600 text-white"
-                  : "bg-white border border-gray-300 hover:bg-gray-50"
+                currentPage === page 
+                  ? 'bg-red-600 text-white' 
+                  : 'bg-white border border-gray-300 hover:bg-gray-50'
               }`}
             >
               {page}
             </a>
           ))}
-
           {currentPage < totalPages && (
-            <a
-              href={`?page=${currentPage + 1}`}
+            <a 
+              href={`?page=${currentPage + 1}`} 
               class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               Siguiente
             </a>
           )}
         </div>
-      )
-    }
-  </div>
+      )}
+    </div>
+  </section>
 
   <style>
     .line-clamp-2 {
@@ -136,4 +127,4 @@ const formatDate = (dateString: string) => {
       overflow: hidden;
     }
   </style>
-</section>
+</Layout>
