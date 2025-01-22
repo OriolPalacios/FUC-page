@@ -1,28 +1,86 @@
 ---
 // src/components/Footer.astro
+import facebookIcon from "../assets/facebookIcon.svg";
+import instagramIcon from "../assets/instagramIcon.svg";
+import tiktokIcon from "../assets/tiktokIcon.svg";
+import unsaacLogo from "../assets/unsaacLogo.svg";
+
+const socialLinks: { name: string; link: string; icon: string }[] = [
+  {
+    name: "Facebook",
+    link: "https://www.facebook.com/GLORIOSAFUC/?locale=es_LA",
+    icon: facebookIcon.src,
+  },
+  {
+    name: "Instagram",
+    link: "https://www.instagram.com/federacionuniversitariacusco/",
+    icon: instagramIcon.src,
+  },
+  {
+    name: "TikTok",
+    link: "https://www.tiktok.com/@fuc.unsaac",
+    icon: tiktokIcon.src,
+  },
+];
 ---
-<footer class="py-12 text-white bg-black">
-    <div class="container px-6 mx-auto">
-      <div class="grid gap-8 md:grid-cols-3">
-        <div>
-          <h3 class="mb-4 text-xl font-bold">Contacto</h3>
-          <ul class="space-y-2">
-            <li>Dirección: Av. Universidad s/n</li>
-            <li>Teléfono: (123) 456-7890</li>
-            <li>Email: contacto@fuc.edu.pe</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="mb-4 text-xl font-bold">Redes Sociales</h3>
-          <div class="flex gap-4">
-            <a href="#" class="hover:text-red-500">Facebook</a>
-            <a href="#" class="hover:text-red-500">Instagram</a>
-            <a href="#" class="hover:text-red-500">Twitter</a>
-          </div>
-        </div>
-        <div class="flex justify-end">
-          <img src="/logo.png" alt="FUC Logo" class="h-24">
+
+<footer class="py-12 text-white bg-black relative">
+  <div class="container px-6 mx-auto">
+    <div class="grid gap-8 md:grid-cols-4">
+      <div>
+        <h3 class="mb-4 text-xl font-bold">Contacto</h3>
+        <ul class="space-y-2">
+          <li>Dirección: Av. Universidad s/n</li>
+          <li>Teléfono: (123) 456-7890</li>
+          <li>Email: contacto@fuc.edu.pe</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-4 text-xl font-bold">Redes Sociales</h3>
+        <div class="flex flex-col gap-4">
+          {
+            socialLinks.map((value, index) => (
+              <a href={value.link}>
+                <img
+                  src={value.icon}
+                  alt={`${value.name} icon`}
+                  class="h-6 w-6 inline-block mr-2 text-white"
+                />
+                <span>{value.name}</span>
+              </a>
+            ))
+          }
         </div>
       </div>
+      <div class="iframe-rwd">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.823234280544!2d-71.96081673720576!3d-13.52165812657505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916dd5fdf70d465d%3A0xcbddd8e36a2171d!2sUniversidad%20Nacional%20de%20San%20Antonio%20Abad%20del%20Cusco!5e0!3m2!1ses!2spe!4v1737561946476!5m2!1ses!2spe"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="blur-xs justify-self-end ">
+        <img src={unsaacLogo.src} alt="FUC Logo" class="h-28" />
+      </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
+<style>
+  .iframe-rwd {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+  .iframe-rwd iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

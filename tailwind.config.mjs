@@ -8,6 +8,9 @@ export default {
       },
       brightness: {
         60: '.6',
+      },
+      blur:{
+        xs: '1.5px',
       }
     },
   },
