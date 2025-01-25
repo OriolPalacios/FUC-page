@@ -9,9 +9,11 @@ import InstitutionFunctions from '../components/InstitutionFunctions.astro';
 import Timeline from '../components/Timeline.astro';
 import Volunteer from '../components/Volunteer.astro';
 import Footer from '../components/Footer.astro';
+import StarterModal from '../components/starterModal';
 ---
 
 <Layout title="Federación Universitaria del Cusco">
+  <StarterModal client:load/>
   <Hero />
   <InstitutionQuote />
   <About />
