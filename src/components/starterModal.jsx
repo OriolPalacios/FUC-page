@@ -1,8 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import anime from 'animejs';
 
 
 export default function StarterModal() {
+  const [showModal, setShowModal] = useState(true);
+  
+  useEffect(() => {
+    const hasShownModal = localStorage.getItem('hasShownModal');
+    if (!hasShownModal) {
+      setShowModal(true);
+      localStorage.setItem('hasShownModal', 'true');
+    }
+  }, []);
+  
   useEffect(() => {
     const tl = anime.timeline({
       easing: 'easeInOutSine',
@@ -50,6 +60,10 @@ export default function StarterModal() {
       translateY: '-100%',
     })
   }, []);
+
+  if (!showModal) {
+    return null;
+  }
 
   return (
     <div class="container-modal h-screen lg:w-full overflow-hidden bg-red-800 px-2.5 flex flex-col items-center absolute top-0 z-50 ">
