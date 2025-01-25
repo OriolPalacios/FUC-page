@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import anime from 'animejs';
+import unsaacBorder from '../assets/unsaacBorder.png';
 
 
-export default function StarterModal() {
+export default function StarterModalAnimation() {
   const [showModal, setShowModal] = useState(true);
   
   useEffect(() => {
@@ -66,9 +67,9 @@ export default function StarterModal() {
   }
 
   return (
-    <div class="container-modal h-screen lg:w-full overflow-hidden bg-red-800 px-2.5 flex flex-col items-center absolute top-0 z-50 ">
+    <div className="container-modal h-screen lg:w-full overflow-hidden bg-red-800 px-2.5 flex flex-col items-center absolute top-0 z-50 ">
       <div className="w-5/6 h-full flex flex-col items-between overflow-hidden z-100 justify-evenly">
-        <img className="escudo opacity-0 w-auto h-0 max-h-40vh z-100 mt-12 object-contain m-0" src='src/assets/unsaacBorder.png' style={{ filter: 'grayscale(100%)' }} />
+        <img className="escudo opacity-0 w-auto h-0 max-h-40vh z-100 mt-12 object-contain m-0" src={unsaacBorder.src} style={{ filter: 'grayscale(100%)' }} />
         <div className="svg-container overflow-y-hidden w-full flex justify-center h-4/6">
           <svg className="w-full h-full lg:w-1/2" version="1.0" xmlns="http://www.w3.org/2000/svg" width="691pt" height="300pt" viewBox="0 0 691.000000 1.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,235.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
