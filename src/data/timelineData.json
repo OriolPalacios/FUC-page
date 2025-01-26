@@ -1,0 +1,157 @@
+{
+    "title": {
+        "media": {
+            "url": "",
+            "caption": "Historia de la Federación Universitaria Cusco (FUC)",
+            "credit": "Fuente: Tesis Eleazar Crucinta Ugarte, 2017"
+        },
+        "text": {
+            "headline": "Hitos de la Federación Universitaria Cusco (FUC)",
+            "text": "Acontecimientos clave en la formación y desarrollo político de la FUC."
+        }
+    },
+    "events": [
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1947",
+                "month": "7",
+                "day": "18"
+            },
+            "text": {
+                "headline": "Fundación de la FUC",
+                "text": "La Federación Universitaria Cusco fue oficialmente fundada el 18 de julio de 1947, según las actas del Consejo Universitario."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1950"
+            },
+            "text": {
+                "headline": "Terremoto en Cusco",
+                "text": "El devastador terremoto de 1950 impactó profundamente al Cusco, iniciando un proceso de reconstrucción donde los jóvenes universitarios jugaron un papel clave."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1957"
+            },
+            "text": {
+                "headline": "Lucha por el cogobierno universitario",
+                "text": "La FUC lideró protestas estudiantiles demandando cogobierno universitario y defensa de la autonomía universitaria."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1960"
+            },
+            "text": {
+                "headline": "Implementación del cogobierno en Perú",
+                "text": "La ley 13417 de 1960 estableció el cogobierno en universidades del país, marcando un logro significativo impulsado por la FUC."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1940"
+            },
+            "text": {
+                "headline": "Contexto político internacional",
+                "text": "El contexto de la Segunda Guerra Mundial y el conflicto armado con Ecuador influyó en la creación de la FUC."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1946"
+            },
+            "text": {
+                "headline": "Surgimiento del movimiento estudiantil",
+                "text": "Se consolidaron movimientos estudiantiles dentro de la UNSAAC que sentaron las bases para la formación de la FUC."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1944"
+            },
+            "text": {
+                "headline": "Reconocimiento del Día del Cusco",
+                "text": "En 1944, con la creación del Día del Cusco, se fortaleció el sentimiento de identidad cultural entre los estudiantes y la comunidad."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1950"
+            },
+            "text": {
+                "headline": "Reconstrucción del Cusco",
+                "text": "Tras el terremoto, la comunidad universitaria se involucró activamente en la recuperación de la ciudad."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1957"
+            },
+            "text": {
+                "headline": "Primera universidad con cogobierno",
+                "text": "La UNSAAC se convirtió en la primera universidad del país en implementar un cogobierno participativo."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1940"
+            },
+            "text": {
+                "headline": "Crisis económica y política en Perú",
+                "text": "La inestabilidad política y económica del país influyó directamente en las demandas de los movimientos estudiantiles."
+            }
+        }
+    ]
+}

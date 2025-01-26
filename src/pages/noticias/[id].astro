@@ -6,7 +6,7 @@ import type { News } from '../../types/news';
 export async function getStaticPaths() {
   // Obtener todos los datos de la hoja "Noticias"
   const response = await fetch('https://sheetdb.io/api/v1/vojw2fwtn94j3?sheet=Noticias');
-  
+
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
@@ -43,7 +43,7 @@ const formatDate = (dateString: string) => {
 
     <article>
       <h1 class="text-4xl font-bold mb-6">{Titulo}</h1>
-      
+
       <div class="flex items-center gap-4 text-gray-600 mb-8">
         <span>{Autor}</span>
         <span>•</span>
@@ -51,7 +51,7 @@ const formatDate = (dateString: string) => {
       </div>
 
       <img 
-        src={image_url || '/placeholder-news.jpg'} 
+        src={image_url || '/placeholder-news.jpg'}
         alt={Titulo}
         class="w-full h-[400px] object-cover rounded-lg mb-8"
       />

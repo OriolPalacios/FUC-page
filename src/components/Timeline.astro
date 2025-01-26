@@ -1,37 +1,20 @@
 ---
 // src/components/Timeline.astro
-const timelineEvents = [
-  {
-    year: 1957,
-    title: "CRISIS Y REFORMAS UNIVERSITARIAS",
-    details: [
-      "Participación en importantes figuras académicas",
-      "Papel relevante en la educación superior",
-      "Demandas estudiantiles significativas"
-    ]
-  }
-  // Agregar más eventos aquí
-];
+import timelineData from "../data/timelineData.json";
 ---
-<section class="py-20 bg-gray-50">
-  <div class="container px-6 mx-auto">
-    <h2 class="mb-16 text-3xl font-bold text-center">HISTORIA DE LA FUC</h2>
-    <div class="relative">
-      {timelineEvents.map((event) => (
-        <div class="flex gap-8 mb-12">
-          <div class="flex-shrink-0 w-32 text-right">
-            <span class="text-xl font-bold text-red-700">{event.year}</span>
-          </div>
-          <div class="flex-grow p-6 bg-white rounded-lg shadow-lg">
-            <h3 class="mb-4 text-xl font-bold">{event.title}</h3>
-            <ul class="text-gray-600 list-disc list-inside">
-              {event.details.map((detail) => (
-                <li>{detail}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
+
+<link
+  title="timeline-styles"
+  rel="stylesheet"
+  href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css"
+/>
+<section class="py-10 bg-gray-50">
+  <h2 class="mb-5 text-3xl font-bold text-center">HISTORIA DE LA FUC</h2>
+  <div id="timeline-embed" style="width: 100%; height: 600px"></div>
 </section>
+<script
+  src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"
+  is:inline></script>
+<script is:inline define:vars={{ timelineData }}>
+  new TL.Timeline("timeline-embed", timelineData);
+</script>
