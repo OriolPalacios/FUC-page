@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 export default function ValuesCarousel() {
   const values: string[] = [
@@ -19,7 +19,15 @@ export default function ValuesCarousel() {
     "Unidad"
   ];
   return (
-    <Swiper navigation={true} modules={[Navigation]} >
+    <Swiper
+      navigation={true}
+      modules={[Navigation, Autoplay]}
+      loop={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false
+      }}
+    >
       {values.map((value, index) => (
         <SwiperSlide key={index}>
           <div className="flex justify-center items-center">

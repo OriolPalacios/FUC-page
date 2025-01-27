@@ -15,6 +15,7 @@ export default function StarterModalAnimation() {
   }, []);
   
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     const tl = anime.timeline({
       easing: 'easeInOutSine',
       duration: 1000,
@@ -28,8 +29,8 @@ export default function StarterModalAnimation() {
       delay: function (el, i) {
         return i * 300;
       },
+      endDelay: 300,
     });
-
     tl.add({
       targets: ['.escudo'],
       height: '40vh',
@@ -37,11 +38,12 @@ export default function StarterModalAnimation() {
       delay: function (el, i) {
         return i * 500;
       },
+      
     });
     tl.add({
       targets: ['.svg-container'],
       translateY: '10%',
-    }, 1000);
+    }, 1800);
     tl.add({
       targets: ['.escudo'],
       filter: 'grayscale(0%)',
@@ -59,6 +61,10 @@ export default function StarterModalAnimation() {
     tl.add({
       targets: '.container-modal',
       translateY: '-100%',
+      delay:300,  
+      complete: () => {
+        document.body.style.overflow = 'auto';
+      }
     })
   }, []);
 

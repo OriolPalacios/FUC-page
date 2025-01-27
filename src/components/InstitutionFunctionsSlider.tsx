@@ -2,8 +2,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import { Pagination } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export default function InstitutionFunctionSlider() {
   type ContentType = {
@@ -47,12 +48,24 @@ export default function InstitutionFunctionSlider() {
   ];
 
   return (
-    <Swiper pagination={true} modules={[Pagination]} >
+    <Swiper
+      pagination={{
+        clickable: true
+      }}
+      navigation={true}
+      modules={[Pagination, Navigation, Autoplay]}
+      loop={true}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false
+      }}
+      
+    >
       {values.map((value, index) => (
         <SwiperSlide key={index}>
           <div className="flex flex-col justify-center items-center mb-4">
             <p>{value.title}</p>
-            <p className="w-3/4 text-center p-3 rounded-xl text-justify">{value.content}</p>
+            <p className="border-t-4 border-red-700 w-3/4 text-center p-3 rounded-xl text-justify">{value.content}</p>
           </div>
         </SwiperSlide>
       ))}
