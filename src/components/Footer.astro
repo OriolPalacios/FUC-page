@@ -3,7 +3,7 @@
 import facebookIcon from "../assets/facebookIcon.svg";
 import instagramIcon from "../assets/instagramIcon.svg";
 import tiktokIcon from "../assets/tiktokIcon.svg";
-import unsaacLogo from "../assets/unsaacLogo.svg";
+import unsaacBorder from "../assets/unsaacBorder.png";
 
 const socialLinks: { name: string; link: string; icon: string }[] = [
   {
@@ -24,7 +24,7 @@ const socialLinks: { name: string; link: string; icon: string }[] = [
 ];
 ---
 
-<footer class="py-12 text-white bg-black mt-auto w-full">
+<footer class="pt-12 pb-6 text-white bg-black mt-auto w-full">
   <div class="container px-6 mx-auto">
     <div class="grid gap-8 md:grid-cols-4">
       <div> 
@@ -62,9 +62,12 @@ const socialLinks: { name: string; link: string; icon: string }[] = [
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      <div class="blur-xs justify-self-end ">
-        <img src={unsaacLogo.src} alt="FUC Logo" class="h-28" />
+      <div class="justify-self-center">
+        <img src={unsaacBorder.src} alt="FUC Logo" class="h-28" />
       </div>
+      <p class="col-span-4 text-center">
+        By Oriol Palacios & Eliazar Noa  
+      </p>
     </div>
   </div>
 </footer>

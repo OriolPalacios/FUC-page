@@ -24,7 +24,23 @@
             },
             "text": {
                 "headline": "Fundación de la FUC",
-                "text": "La Federación Universitaria Cusco fue oficialmente fundada el 18 de julio de 1947, según las actas del Consejo Universitario."
+                "text": "La FUC se establece oficialmente el 18 de julio de 1947, reemplazando a la Asociación Sindical Universitaria (ASU), bajo el estatuto universitario de 1946 que promovía la participación estudiantil en el cogobierno."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1947",
+                "month": "7",
+                "day": "23"
+            },
+            "text": {
+                "headline": "Primera Junta Directiva de la FUC",
+                "text": "Se conforma la primera directiva de la FUC con Hermógenes Casaverde como presidente, marcando el inicio formal de su estructura organizativa."
             }
         },
         {
@@ -38,7 +54,7 @@
             },
             "text": {
                 "headline": "Terremoto en Cusco",
-                "text": "El devastador terremoto de 1950 impactó profundamente al Cusco, iniciando un proceso de reconstrucción donde los jóvenes universitarios jugaron un papel clave."
+                "text": "El terremoto de 1950 impacta al Cusco, generando reconstrucción liderada por el gobierno de Odría, lo que limitó temporalmente las protestas estudiantiles."
             }
         },
         {
@@ -48,11 +64,27 @@
                 "credit": ""
             },
             "start_date": {
-                "year": "1957"
+                "year": "1957",
+                "month": "9",
+                "day": "26"
             },
             "text": {
-                "headline": "Lucha por el cogobierno universitario",
-                "text": "La FUC lideró protestas estudiantiles demandando cogobierno universitario y defensa de la autonomía universitaria."
+                "headline": "Asamblea Magna por la Reforma Universitaria",
+                "text": "Estudiantes y docentes realizan una histórica asamblea que establece la Junta Reorganizadora de la UNSAAC, exigiendo cogobierno y autonomía universitaria bajo liderazgo del presidente de la FUC, Mario Cama."
+            }
+        },
+        {
+            "media": {
+                "url": "",
+                "caption": "",
+                "credit": ""
+            },
+            "start_date": {
+                "year": "1959"
+            },
+            "text": {
+                "headline": "Nueva Dirección Estudiantil",
+                "text": "Valentín Paniagua asume la presidencia de la FUC, impulsando el comedor universitario y consolidando una etapa de reivindicaciones sociales."
             }
         },
         {
@@ -65,8 +97,8 @@
                 "year": "1960"
             },
             "text": {
-                "headline": "Implementación del cogobierno en Perú",
-                "text": "La ley 13417 de 1960 estableció el cogobierno en universidades del país, marcando un logro significativo impulsado por la FUC."
+                "headline": "Ley 13417 y Cogobierno Institucionalizado",
+                "text": "El gobierno de Manuel Prado promulga la Ley 13417, que consagra el cogobierno universitario con participación estudiantil, influenciada por las luchas iniciadas en el Cusco en 1957."
             }
         },
         {
@@ -76,81 +108,11 @@
                 "credit": ""
             },
             "start_date": {
-                "year": "1940"
+                "year": "1960"
             },
             "text": {
-                "headline": "Contexto político internacional",
-                "text": "El contexto de la Segunda Guerra Mundial y el conflicto armado con Ecuador influyó en la creación de la FUC."
-            }
-        },
-        {
-            "media": {
-                "url": "",
-                "caption": "",
-                "credit": ""
-            },
-            "start_date": {
-                "year": "1946"
-            },
-            "text": {
-                "headline": "Surgimiento del movimiento estudiantil",
-                "text": "Se consolidaron movimientos estudiantiles dentro de la UNSAAC que sentaron las bases para la formación de la FUC."
-            }
-        },
-        {
-            "media": {
-                "url": "",
-                "caption": "",
-                "credit": ""
-            },
-            "start_date": {
-                "year": "1944"
-            },
-            "text": {
-                "headline": "Reconocimiento del Día del Cusco",
-                "text": "En 1944, con la creación del Día del Cusco, se fortaleció el sentimiento de identidad cultural entre los estudiantes y la comunidad."
-            }
-        },
-        {
-            "media": {
-                "url": "",
-                "caption": "",
-                "credit": ""
-            },
-            "start_date": {
-                "year": "1950"
-            },
-            "text": {
-                "headline": "Reconstrucción del Cusco",
-                "text": "Tras el terremoto, la comunidad universitaria se involucró activamente en la recuperación de la ciudad."
-            }
-        },
-        {
-            "media": {
-                "url": "",
-                "caption": "",
-                "credit": ""
-            },
-            "start_date": {
-                "year": "1957"
-            },
-            "text": {
-                "headline": "Primera universidad con cogobierno",
-                "text": "La UNSAAC se convirtió en la primera universidad del país en implementar un cogobierno participativo."
-            }
-        },
-        {
-            "media": {
-                "url": "",
-                "caption": "",
-                "credit": ""
-            },
-            "start_date": {
-                "year": "1940"
-            },
-            "text": {
-                "headline": "Crisis económica y política en Perú",
-                "text": "La inestabilidad política y económica del país influyó directamente en las demandas de los movimientos estudiantiles."
+                "headline": "Elección de Nuevas Autoridades Universitarias",
+                "text": "Luis E. Saldivar es elegido rector bajo el nuevo estatuto, consolidando el modelo de cogobierno con representación estudiantil en el Consejo Universitario."
             }
         }
     ]
