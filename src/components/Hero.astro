@@ -24,9 +24,17 @@ import escudoUnsaac from "../assets/escudoUnsaac.png";
       Gloriosa Federación Universitaria del Cusco
     </h1>
     <button
+      id="hero-explore-button"
       class="lg:absolute lg:bottom-0 px-8 py-3 text-white transition bg-gradient-to-r from-red-700 to-gray-950 rounded-full z-0 pointer hover:bg-red-800"
     >
       Explorar
-    </button>
+  </button>
   </div>
 </div>
+<script>
+  document.getElementById('hero-explore-button')?.addEventListener('click', () => {
+    const targetSection = document.getElementById('about-section');
+    if (targetSection)
+      targetSection.scrollIntoView({behavior: 'smooth'});
+  });
+</script>
