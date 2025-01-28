@@ -4,7 +4,7 @@ import escudoUnsaac from "../assets/escudoUnsaac.png";
 import Hamburguer from "./Hamburguer.astro";
 ---
 
-<nav class="top-0 w-full h-screen absolute">
+<nav class="top-0 w-full absolute">
   <div
     class="nav-links z-20 fixed top-0 -translate-x-full lg:translate-x-0 transition-transform right-0 py-4 w-full h-screen text-white bg-gradient-to-r from-gray-900 lg:fixed lg:from-gray-900 lg:bg-gradient-to-b lg:h-fit"
   >
@@ -14,7 +14,7 @@ import Hamburguer from "./Hamburguer.astro";
       <Image
         src={escudoUnsaac}
         alt="Logo de la universidad"
-        class="fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-14"
+        class="hidden lg:block fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-14"
       />
       <div
         class="flex flex-col brightness-75 items-start w-full gap-6 mb-3.5 lg:order-1 lg:flex-row lg:justify-evenly lg:mb-0 lg:w-2/5"
@@ -36,17 +36,8 @@ import Hamburguer from "./Hamburguer.astro";
 </nav>
 <script>
   const toggleNav = () => {
-    const topPath = document.querySelector('.path-top');
-    const middlePath = document.querySelector('.path-middle');
-    const bottomPath = document.querySelector('.path-bottom');
+    const line = document.querySelector('.line');
     document.querySelector(".nav-links")?.classList.toggle("-translate-x-full");
-    topPath?.classList.toggle('rotate-45')
-    topPath?.classList.toggle('-translate-y-0.5')
-    middlePath?.classList.toggle('-rotate-45')
-    middlePath?.classList.toggle('translate-y-1.5')
-    middlePath?.classList.toggle('translate-x-0.5')
-    bottomPath?.classList.toggle('scale-0')
-
   };
   const menu = document.querySelector(".hamburguer");
   menu?.addEventListener("click", () => toggleNav());
