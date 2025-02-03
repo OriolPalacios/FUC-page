@@ -32,20 +32,20 @@
 
 <style>
   .line {
-    transition: background 10ms 300ms ease;
+    transition: background 10ms 250ms ease;
     height: 3px;
   }
   .line::before {
     transition:
-      top 300ms 350ms ease,
-      transform 300ms 50ms ease;
+      top 200ms 250ms ease,
+      transform 200ms 0ms ease;
     top: -0.5rem;
     height: 3px;
   }
   .line::after {
     transition:
-      top 300ms 350ms ease,
-      transform 300ms 50ms ease;
+      top 200ms 250ms ease,
+      transform 200ms 0ms ease;
     top: 0.5rem;
     height: 3px;
   }
@@ -53,8 +53,8 @@
   #toggle-nav:checked + label .line::after,
   #toggle-nav:checked + label .line::before {
     transition:
-      top 300ms 50ms ease,
-      transform 300ms 350ms ease;
+      top 200ms 0ms ease,
+      transform 200ms 250ms ease;
     top: 0;
   }
   #toggle-nav:checked + label .line {

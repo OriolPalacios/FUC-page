@@ -2,43 +2,27 @@ import React, { useEffect, useState } from 'react';
 import anime from 'animejs';
 import unsaacBorder from '../assets/unsaacBorder.png';
 
-
 export default function StarterModalAnimation() {
-  const [showModal, setShowModal] = useState(true);
-  
-  useEffect(() => {
-    const hasShownModal = localStorage.getItem('hasShownModal');
-    if (!hasShownModal) {
-      setShowModal(true);
-      localStorage.setItem('hasShownModal', 'true');
-    }
-  }, []);
-  
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     const tl = anime.timeline({
       easing: 'easeInOutSine',
-      duration: 1000,
+      duration: 700,
       direction: 'normal',
     });
-
     tl.add({
       targets: ['#f-letter', '#u-letter', '#c-letter'],
       translateY: '2000',
       opacity: 1,
-      delay: function (el, i) {
-        return i * 300;
-      },
+      delay: (el, i) => i * 300,
       endDelay: 300,
     });
     tl.add({
       targets: ['.escudo'],
       height: '40vh',
       opacity: 1,
-      delay: function (el, i) {
-        return i * 500;
-      },
-      
+      delay: (el, i) => i * 500,
     });
     tl.add({
       targets: ['.svg-container'],
@@ -47,13 +31,13 @@ export default function StarterModalAnimation() {
     tl.add({
       targets: ['.escudo'],
       filter: 'grayscale(0%)',
-      delay: 300
-    }, 2200)
+      delay: 300,
+    }, 2200);
     tl.add({
       targets: ['#f-letter', '#u-letter', '#c-letter'],
       fill: '#e3a133',
-      delay: 300
-    }, 2200)
+      delay: 300,
+    }, 2200);
     tl.add({
       targets: ['.container-modal'],
       backgroundColor: 'rgb(116, 21, 21)',
@@ -61,33 +45,21 @@ export default function StarterModalAnimation() {
     tl.add({
       targets: '.container-modal',
       translateY: '-100%',
-      delay:300,  
+      delay: 300,
       complete: () => {
         document.body.style.overflow = 'auto';
       }
-    })
+    });
   }, []);
 
-  if (!showModal) {
-    return null;
-  }
-
   return (
-    <div className="container-modal h-screen lg:w-full overflow-hidden bg-red-800 px-2.5 flex flex-col items-center absolute top-0 z-50 ">
-      <div className="w-5/6 h-full flex flex-col items-between overflow-hidden z-100 justify-evenly">
+    <div className="container-modal h-screen lg:w-full overflow-hidden bg-red-800 px-2.5 flex flex-col items-center absolute top-0 z-50">
+      <div className="w-5/6 h-full flex flex-col justify-evenly items-between overflow-hidden z-100">
         <img className="escudo opacity-0 w-auto h-0 max-h-40vh z-100 mt-12 object-contain m-0" src={unsaacBorder.src} style={{ filter: 'grayscale(100%)' }} />
         <div className="svg-container overflow-y-hidden w-full flex justify-center h-4/6">
           <svg className="w-full h-full lg:w-1/2" version="1.0" xmlns="http://www.w3.org/2000/svg" width="691pt" height="300pt" viewBox="0 0 691.000000 1.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,235.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
-              <path id="f-letter" className="opacity-0" d="M30 2270 c0 -33 3 -60 8 -60 4 0 38 -5 75 -10 97 -14 140 -39 168
-              -97 l24 -48 0 -870 0 -870 -25 -50 c-34 -67 -91 -97 -201 -103 l-79 -5 0 -58
-              0 -59 590 0 590 0 0 59 0 58 -107 6 c-176 8 -259 47 -299 140 -17 38 -19 81
-              -22 415 l-4 372 105 0 c105 0 256 -20 312 -42 56 -22 113 -70 139 -117 22 -42
-              37 -90 60 -194 6 -25 10 -27 61 -27 l55 0 0 465 0 465 -55 0 -54 0 -6 -37 c-4
-              -21 -13 -65 -21 -97 -43 -179 -147 -237 -447 -251 l-147 -8 0 441 c0 397 2
-              442 17 457 14 15 47 16 322 12 324 -4 355 -8 458 -58 102 -49 166 -150 200
-              -313 l18 -86 63 0 63 0 -5 58 c-3 31 -11 149 -16 262 -6 113 -13 229 -16 258
-              l-5 52 -910 0 -909 0 0 -60z"></path>
+              <path id="f-letter" className="opacity-0" d="M30 2270 c0 -33 3 -60 8 -60 4 0 38 -5 75 -10 97 -14 140 -39 168 -97 l24 -48 0 -870 0 -870 -25 -50 c-34 -67 -91 -97 -201 -103 l-79 -5 0 -58 0 -59 590 0 590 0 0 59 0 58 -107 6 c-176 8 -259 47 -299 140 -17 38 -19 81 -22 415 l-4 372 105 0 c105 0 256 -20 312 -42 56 -22 113 -70 139 -117 22 -42 37 -90 60 -194 6 -25 10 -27 61 -27 l55 0 0 465 0 465 -55 0 -54 0 -6 -37 c-4 -21 -13 -65 -21 -97 -43 -179 -147 -237 -447 -251 l-147 -8 0 441 c0 397 2 442 17 457 14 15 47 16 322 12 324 -4 355 -8 458 -58 102 -49 166 -150 200 -313 l18 -86 63 0 63 0 -5 58 c-3 31 -11 149 -16 262 -6 113 -13 229 -16 258 l-5 52 -910 0 -909 0 0 -60z"></path>
               <path id="u-letter" className="opacity-0" d="M2030 2270 c0 -33 3 -60 8 -60 77 -5 159 -22 181 -37 43 -31 69 -98
                 80 -205 7 -56 11 -335 11 -655 1 -682 7 -745 95 -928 98 -204 280 -316 586
                 -361 137 -20 448 -14 569 10 302 63 482 210 569 467 57 167 63 239 71 874 8

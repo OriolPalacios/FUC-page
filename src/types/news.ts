@@ -17,3 +17,33 @@ export interface NewsResponse {
   page: number; // Página actual
   totalPages: number; // Total de páginas disponibles
 }
+
+interface ImageType {
+  url: string;
+  title: string;
+  mimetype: string;
+  size: number;
+  width: number;
+  height: number;
+  id: string;
+  thumbnails: {
+    tiny: { signedUrl: string; };
+    small: { signedUrl: string; };
+    card_cover: { signedUrl: string; };
+  };
+  signedUrl: string;
+}
+
+export interface NewsItem {
+  Noticia: string;
+  Contenido: string;
+  Categoria: string;
+  Imagenes: ImageType[];
+  CreatedAt: string;
+  Autor: {
+    id: number;
+    email: string;
+    display_name: string;
+    meta: string | null | undefined;
+  }
+}

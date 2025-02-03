@@ -2,11 +2,18 @@
 import { Image } from "astro:assets";
 import escudoUnsaac from "../assets/escudoUnsaac.png";
 import Hamburguer from "./Hamburguer.astro";
+import Home from "./Home.astro";
+
+interface Props {
+  isHeroPage: boolean;
+}
+
+const { isHeroPage = false} = Astro.props;
 ---
 
 <nav class="top-0 w-full absolute">
   <div
-    class="nav-links z-20 fixed top-0 -translate-x-full lg:translate-x-0 transition-transform duration-300 right-0 py-4 w-full h-screen text-white bg-gradient-to-r from-gray-900 lg:fixed lg:from-gray-900 lg:bg-gradient-to-b lg:h-fit"
+    class={`nav-links z-20 fixed top-0 -translate-x-full lg:translate-x-0 transition-transform duration-300 right-0 py-4 w-full h-screen text-white ${isHeroPage ? 'bg-gradient-to-r from-gray-900 lg:fixed lg:from-gray-900 lg:bg-gradient-to-b' : 'lg:bg-red-800 bg-gradient-to-r from-gray-900 lg:fixed lg:from-gray-900 lg:bg-gradient-to-b'}  lg:h-fit`}
   >
     <div
       class="flex w-full flex-col px-5 py-5 items-center justify-evenly lg:px-0 lg:flex-row lg:justify-between"
@@ -17,26 +24,29 @@ import Hamburguer from "./Hamburguer.astro";
         class="hidden lg:block fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-14"
       />
       <div
-        class="flex flex-col brightness-75 items-start w-full gap-6 mb-3.5 lg:order-1 lg:flex-row lg:justify-evenly lg:mb-0 lg:w-2/5"
+        class="flex flex-col items-start w-full gap-6 mb-3.5 lg:order-1 lg:flex-row lg:justify-evenly lg:mb-0 lg:w-2/5 text-white "
       >
-        <a href="noticias" class="transition hover:text-red-500">NOTICIAS</a>
-        <a href="#" class="transition hover:text-red-500">CONSULTAS</a>
-        <a href="#" class="transition hover:text-red-500">DOCUMENTOS</a>
+        <div class="relative"><a href="noticias" class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform">NOTICIAS</a></div>
+        <div class="relative"><a href="#" class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform">CONSULTAS</a></div>
+        <div class="relative"><a href="#" class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform">DOCUMENTOS</a></div>
       </div>
       <div
         class="flex flex-col items-start w-full gap-6 lg:order-3 lg:flex-row lg:justify-evenly lg:w-2/5"
       >
-        <a href="#" class="transition hover:text-red-500">EVENTOS</a>
-        <a href="#" class="transition hover:text-red-500">MIEMBROS</a>
-        <a href="#" class="transition hover:text-red-500">GALERÍA</a>
+        <div class="relative"><a href="#" class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform">EVENTOS</a></div>
+        <div class="relative"><a href="#" class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform">MIEMBROS</a></div>
+        <div class="relative"><a href="#" class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform">GALERÍA</a></div>
       </div>
     </div>
   </div>
+  {!isHeroPage && (
+    <Home />
+  )}
   <Hamburguer />
 </nav>
 <script>
   const toggleNav = () => {
-    const line = document.querySelector('.line');
+    const line = document.querySelector(".line");
     document.querySelector(".nav-links")?.classList.toggle("-translate-x-full");
   };
   const menu = document.querySelector(".hamburguer");
