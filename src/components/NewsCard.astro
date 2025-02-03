@@ -1,0 +1,53 @@
+---
+import Image from "astro/components/Image.astro";
+import type { NewsItem } from "../types/news";
+
+export interface Props extends NewsItem {}
+
+const { Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } =
+  Astro.props;
+---
+
+<div
+  class="flex flex-row md:flex-col w-full shadow-lg gap-2 rounded-2xl h-40 md:h-80 overflow-hidden md:max-w-[300px] lg:max-w-[500px]"
+>
+  <div class="flex justify-center w-1/2 h-full md:w-full md:h-1/2 relative">
+    <Image
+      src={Imagenes[0].thumbnails.small.signedUrl}
+      alt="card"
+      class="w-full card-image"
+      inferSize={true}
+    />
+    <p
+      class="absolute bottom-0 left-0 px-1 py-1 bg-gray-400/50 text-white text-md"
+    >
+      {new Date(CreatedAt).toLocaleDateString()}
+    </p>
+  </div>
+  <div
+    class="card-content relative w-1/2 flex flex-col align-center justify-center content-between md:w-full md:items-center"
+  >
+    <p
+      class="block md:hidden bg-red-800 text-sm text-white text-center py-2 px-1 absolute top-0 w-full"
+    >
+      {Categoria.split(",")[0]}
+    </p>
+    <p
+      class="hidden md:block bg-red-800 text-sm text-white text-center py-2 px-1 absolute md:relative top-0 w-full"
+    >
+      {Categoria}
+    </p>
+    <p class="font-bold text-center mt-4 md:text-xl  md:px-4">{Noticia}</p>
+    {
+      <p class="hidden md:block italic text-gray-500 text-sm truncate line-clamp/2 w-5/6 md:w-3/4 md:h-1/3 md:px-2">{Contenido}</p>
+    }
+  </div>
+</div>
+
+<!-- todo: check if this doesn't stop the rest of images from rendering well -->
+<style>
+  .card-image {
+    max-width: 96px;
+    max-height: 128px;
+  }
+</style>

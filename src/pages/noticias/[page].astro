@@ -1,61 +1,31 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import NewsCard from "../../components/NewsCard.astro";
 import Image from "astro/components/Image.astro";
 import { getNews } from "../../services/news";
 import type { NewsItem } from "../../types/news";
 import type { GetStaticPaths } from "astro";
+import NavigationPagination from "../../components/NavigationPagination.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const news = await getNews();
   console.log(news.list[0].Imagenes[0].thumbnails);
-  return paginate(news.list, { pageSize: 2 });
+  return paginate(news.list, { pageSize: 4 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 ---
 
 <Layout title="Noticias">
-  <h3 class="text-center font-bold text-2xl py-6 bg-red-800 text-white mb-5">
+  <h3 class="text-center font-bold text-2xl py-6 bg-red-800 text-white mb-5 lg:mt-40 lg:bg-transparent lg:text-gray-800 lg:text-4xl">
     Noticias
   </h3>
-  <div class="grid grid-cols-1 container gap-5 px-2">
+  <div class="cards-container flex flex-col gap-5 px-4 min-h-[500px] md:min-h-[800px] md:flex-wrap md:flex-row md:justify-center md:px-0 w-full">
     {
       (page.data as NewsItem[]).map(
-        ({ Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor }) => (
-          <div class="flex flex-row w-full shadow-lg gap-2 rounded-xl h-40">
-            <div class="card-image flex w-1/3 h-full relative">
-              <Image
-                src={Imagenes[0].thumbnails.small.signedUrl}
-                alt="card"
-                class="w-full card-image"
-                inferSize={true}
-              />
-              <span class="absolute bottom-0 rounded-xl bg-gray-700 text-white">
-                {new Date(CreatedAt).toLocaleDateString()}
-              </span>
-            </div>
-            <div class="card-content w-2/3 grid grid-rows-[1fr_1fr_2fr]">
-              <span class="block md:hidden ">{Categoria.split(",")[0]}</span>
-              <span class="hidden md:block ">{Categoria}</span>
-              <h5>{Noticia}</h5>
-              <p>{Contenido}</p>
-            </div>
-          </div>
-        ),
+        (newsItem) => <NewsCard {...newsItem} />,
       )
     }
   </div>
-  <div>
-    {page.url.first ? <a href={page.url.first}>First</a> : null}
-    {page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
-    {page.url.next ? <a href={page.url.next}>Next</a> : null}
-    {page.url.last ? <a href={page.url.last}>Last</a> : null}
-  </div>
+  <NavigationPagination urls={page.url}/>
 </Layout>
-
-<style>
-  .card-image {
-    max-width: 96px;
-    max-height: 128px;
-  }
-</style>

@@ -1,0 +1,33 @@
+---
+interface Urls {
+  first?: string;
+  prev?: string;
+  next?: string;
+  last?: string;
+}
+
+const { urls } = Astro.props as { urls: Urls };
+---
+
+<div class="flex justify-center space-x-4 my-4">
+  {urls.first ? (
+    <a href={urls.first} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+      Primero
+    </a>
+  ) : null}
+  {urls.prev ? (
+    <a href={urls.prev} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+      Antes
+    </a>
+  ) : null}
+  {urls.next ? (
+    <a href={urls.next} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+      Siguiente
+    </a>
+  ) : null}
+  {urls.last ? (
+    <a href={urls.last} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+      Ultimo
+    </a>
+  ) : null}
+</div>
