@@ -1,9 +1,10 @@
 ---
 // src/components/Footer.astro
-import facebookIcon from "../assets/facebookIcon.svg";
-import instagramIcon from "../assets/instagramIcon.svg";
-import tiktokIcon from "../assets/tiktokIcon.svg";
-import unsaacBorder from "../assets/unsaacBorder.png";
+import facebookIcon from "@assets/facebookIcon.svg";
+import instagramIcon from "@assets/instagramIcon.svg";
+import tiktokIcon from "@assets/tiktokIcon.svg";
+import linkedinIcon from "@assets/linkedinIcon.svg";
+import unsaacBorder from "@assets/unsaacBorder.png";
 
 const socialLinks: { name: string; link: string; icon: string }[] = [
   {
@@ -21,6 +22,11 @@ const socialLinks: { name: string; link: string; icon: string }[] = [
     link: "https://www.tiktok.com/@fuc.unsaac",
     icon: tiktokIcon.src,
   },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/federaci%C3%B3n-universitaria-del-cusco-061621314/",
+    icon: linkedinIcon.src,
+  }
 ];
 ---
 
