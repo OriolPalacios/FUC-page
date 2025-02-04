@@ -1,0 +1,58 @@
+---
+export const prerender = false;
+
+import Layout from "@layouts/Layout.astro";
+import BackArrow from "@components/BackArrow.astro";
+import { getNewsPerId } from "@services/news";
+
+export interface Params {
+  detailsId: string;
+}
+
+const detailsId = Astro.params?.detailsId ?? "";
+let data;
+
+if (detailsId) {
+  try {
+    data = await getNewsPerId(detailsId);
+  } catch (error) {
+    console.error(error);
+    return Astro.redirect("/noticias/page/1");
+  }
+}
+
+const { Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
+---
+
+<Layout title=`${Noticia}`>
+  <div class="flex flex-row justify-start max-h-[60px] w-fit bg-red-800 text-white ml-2 mt-2 p-2 rounded-xl text-sm hover:bg-white hover:text-red-800 transition-colors gap-2 lg:mt-40 lg:ml-10 xl:mt-50">
+    <BackArrow />
+    <button
+      onclick="window.history.back()"
+    >
+      Regresar
+    </button>
+  </div>
+  <div class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]">
+    <h1 class="text-3xl font-bold font-serif text-center">{Noticia}</h1>
+    <div class="text-gray-500 text-sm self-start flex flex-row gap-2">
+      {
+        Categoria.split(",").map((el: string) => (
+          <span class="p-2 rounded bg-red-800 text-white">{el}</span>
+        ))
+      }
+    </div>
+    <img
+      src={Imagenes[0].thumbnails.card_cover.signedUrl}
+      alt="news"
+      class="max-h-[200px] object-fit md:max-h-[300px]"
+    />
+    <div class="flex flex-row gap-2 justify-between w-full border-b-2">
+      <p class="text-gray-500 text-sm">{Autor.display_name}</p>
+      <p class="text-gray-500 text-sm">
+        {new Date(CreatedAt).toLocaleDateString()}
+      </p>
+    </div>
+    <p class="text-lg font-serif md:self-start">{Contenido}</p>
+  </div>
+</Layout>
