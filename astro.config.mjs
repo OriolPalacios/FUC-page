@@ -3,9 +3,15 @@ import tailwind from '@astrojs/tailwind';
 
 import react from '@astrojs/react';
 
+import netlify from '@astrojs/netlify';
+
 export default defineConfig({
   integrations: [tailwind(), react()],
+
   redirects: {
-    '/noticias': '/noticias/1',
-  }
+    '/noticias': '/noticias/page/1',
+    '/home': '/'
+  },
+
+  adapter: netlify()
 });
