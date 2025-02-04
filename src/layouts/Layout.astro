@@ -43,4 +43,9 @@ const { title, isHeroPage = false  } = Astro.props;
   .tl-slide .tl-slide-background {
     filter: blur(3px);
   }
+  @media (max-width: 768px) {
+    .tl-media-blockquote blockquote {
+      font-size: medium !important;
+    }
+  }
 </style>

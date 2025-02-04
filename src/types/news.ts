@@ -35,6 +35,7 @@ interface ImageType {
 }
 
 export interface NewsItem {
+  Id: number;
   Noticia: string;
   Contenido: string;
   Categoria: string;

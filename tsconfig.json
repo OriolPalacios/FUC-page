@@ -9,7 +9,14 @@
     "dist"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "paths": {
+      "@services/*": ["src/services/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"],
+    }
   }
 }
