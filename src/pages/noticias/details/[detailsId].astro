@@ -1,9 +1,11 @@
 ---
 export const prerender = false;
 
+import { marked } from "marked";
 import Layout from "@layouts/Layout.astro";
 import BackArrow from "@components/BackArrow.astro";
 import { getNewsPerId } from "@services/news";
+import BackArrowButton from "@components/BackArrowButton.astro";
 
 export interface Params {
   detailsId: string;
@@ -22,18 +24,14 @@ if (detailsId) {
 }
 
 const { Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
+const ContenidoParsed = marked.parse(Contenido);
 ---
 
 <Layout title=`${Noticia}`>
-  <div class="flex flex-row justify-start max-h-[60px] w-fit bg-red-800 text-white ml-2 mt-2 p-2 rounded-xl text-sm hover:bg-white hover:text-red-800 transition-colors gap-2 lg:mt-40 lg:ml-10 xl:mt-50">
-    <BackArrow />
-    <button
-      onclick="window.history.back()"
-    >
-      Regresar
-    </button>
-  </div>
-  <div class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]">
+  <BackArrowButton />
+  <div
+    class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]"
+  >
     <h1 class="text-3xl font-bold font-serif text-center">{Noticia}</h1>
     <div class="text-gray-500 text-sm self-start flex flex-row gap-2">
       {
@@ -53,6 +51,8 @@ const { Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
         {new Date(CreatedAt).toLocaleDateString()}
       </p>
     </div>
-    <p class="text-lg font-serif md:self-start">{Contenido}</p>
+    <p class="text-lg font-serif md:self-start">
+      <div class="prose prose-slate self-start min-w-[100%]" set:html={ ContenidoParsed}></div>
+    </p>
   </div>
 </Layout>

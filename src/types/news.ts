@@ -37,6 +37,7 @@ interface ImageType {
 export interface NewsItem {
   Id: number;
   Noticia: string;
+  Resumen: string;
   Contenido: string;
   Categoria: string;
   Imagenes: ImageType[];
