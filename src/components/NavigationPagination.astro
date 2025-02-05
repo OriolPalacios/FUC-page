@@ -1,32 +1,33 @@
 ---
-interface Urls {
-  first?: string;
-  prev?: string;
-  next?: string;
-  last?: string;
-}
+import type { pageInfo } from "@customTypes/common";
 
-const { urls } = Astro.props as { urls: Urls };
+const { pageInfoData, currentSection } = Astro.props as { pageInfoData: pageInfo, currentSection: string };
+console.log('currentsection in navigation', currentSection);
+const { isFirstPage, isLastPage, page, totalRows, pageSize } = pageInfoData;
+const totalPages = Math.ceil(totalRows / pageSize);
+const prev = page > 1 ? page - 1 : null;
+const next = page < totalPages ? page + 1 : null;
+const baseUrl = `/${currentSection}/page/`;
 ---
 
 <div class="flex justify-center space-x-4 my-4">
-  {urls.first ? (
-    <a href={urls.first} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+  {isFirstPage ? (
+    <a href={baseUrl + '1'} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
       Primero
     </a>
   ) : null}
-  {urls.prev ? (
-    <a href={urls.prev} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+  {prev ? (
+    <a href={baseUrl + prev} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
       Antes
     </a>
   ) : null}
-  {urls.next ? (
-    <a href={urls.next} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+  {next ? (
+    <a href={baseUrl + next} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
       Siguiente
     </a>
   ) : null}
-  {urls.last ? (
-    <a href={urls.last} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+  {isLastPage ? (
+    <a href={baseUrl + totalPages} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
       Ultimo
     </a>
   ) : null}

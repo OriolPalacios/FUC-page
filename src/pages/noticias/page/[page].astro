@@ -1,18 +1,26 @@
 ---
+export const prerender = false;
+
 import Layout from "@layouts/Layout.astro";
 import NewsCard from "@components/NewsCard.astro";
-import { getNews } from "@services/news";
-import type { NewsItem } from "../../../types/news";
-import type { GetStaticPaths } from "astro";
+import { getNewsPerPage } from "@services/news";
+import type { NewsItem } from "@customTypes/news";
 import NavigationPagination from "@components/NavigationPagination.astro";
+import type { pageInfo } from "@customTypes/common";
 
-export const getStaticPaths = (async ({ paginate }) => {
-  const news = await getNews();
-  // console.log(news.list[0].Imagenes[0].thumbnails);
-  return paginate(news.list, { pageSize: 4 });
-}) satisfies GetStaticPaths;
-
-const { page } = Astro.props;
+const page = Astro.params?.page ?? '1';
+const pageNumber = parseInt(page, 10);
+let data;
+let pages: NewsItem[];
+let pageInfoData: pageInfo;
+try {
+  data = await getNewsPerPage(pageNumber);
+  pages = data.list;
+  pageInfoData = data.pageInfo;
+} catch (error) {
+  return Astro.redirect("/noticias/page/1");
+}
+console.log('pageDataInfo', pageInfoData);
 ---
 
 <Layout title="Noticias">
@@ -21,10 +29,14 @@ const { page } = Astro.props;
   </h3>
   <div class="cards-container flex flex-col gap-5 px-4 min-h-[500px] md:min-h-[800px] md:flex-wrap md:flex-row md:justify-center md:px-0 w-full">
     {
-      (page.data as NewsItem[]).map(
+      (pages as NewsItem[]).map(
         (newsItem) => <NewsCard {...newsItem} />,
       )
     }
   </div>
-  <NavigationPagination urls={page.url}/>
+  {
+    pageInfoData && (
+      <NavigationPagination pageInfoData={pageInfoData} currentSection='noticias'/>
+    )
+  }
 </Layout>
