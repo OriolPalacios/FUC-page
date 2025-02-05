@@ -26,14 +26,18 @@ const socialLinks: { name: string; link: string; icon: string }[] = [
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/federaci%C3%B3n-universitaria-del-cusco-061621314/",
     icon: linkedinIcon.src,
-  }
+  },
 ];
+
+const { isHeroPage } = Astro.props;
 ---
 
-<footer class="pt-12 pb-6 text-white bg-black mt-auto w-full overflow-hidden ">
+<footer class="pt-12 pb-6 text-white bg-black mt-auto w-full overflow-hidden">
   <div class="container px-6 mx-auto">
-    <div class="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center">
-      <div class="self-start"> 
+    <div
+      class="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center"
+    >
+      <div class="self-start">
         <h3 class="mb-4 text-xl font-bold">Contacto</h3>
         <ul class="space-y-2">
           <li>Dirección: Av. Universidad s/n</li>
@@ -72,7 +76,7 @@ const socialLinks: { name: string; link: string; icon: string }[] = [
         <img src={unsaacBorder.src} alt="FUC Logo" class="h-28" />
       </div>
       <p class="col-span-2 self-center lg:col-span-4 text-center">
-        By Oriol Palacios & Eliazar Noa  
+        By Oriol Palacios {isHeroPage ? '& Eliazar Noa' : ''}
       </p>
     </div>
   </div>

@@ -22,7 +22,7 @@ const { title, isHeroPage = false  } = Astro.props;
   <body class="relative">
     <Navigation isHeroPage={isHeroPage}/>
     <slot />
-    <Footer />
+    <Footer isHeroPage={isHeroPage}/>
   </body>
 </html>
 
