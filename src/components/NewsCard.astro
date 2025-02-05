@@ -13,11 +13,10 @@ const { Id, Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } =
   href=`/noticias/details/${Id}`
 >
   <div class="flex justify-center w-1/2 h-full md:w-full md:h-1/2 relative">
-    <Image
+    <img
       src={Imagenes[0].thumbnails.small.signedUrl}
       alt="card"
       class="w-full card-image"
-      inferSize={true}
     />
     <p
       class="absolute bottom-0 left-0 px-1 py-1 bg-gray-400/50 text-white text-md"
