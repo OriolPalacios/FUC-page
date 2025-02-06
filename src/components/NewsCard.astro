@@ -8,7 +8,7 @@ const { Id, Noticia, Resumen, Categoria, Imagenes, CreatedAt, Autor } =
 ---
 
 <a
-  class="flex flex-row w-full gap-2 md:rounded-2xl h-40 md:h-64 overflow-hidden transition-transform hover:scale-105 lg:flex-col lg:h-[450px] lg:gap-0 md:rounded-none md:shadow-lg lg:hover:shadow-xl lg:transform-none lg:pb-3"
+  class="flex group flex-row w-full gap-2 md:rounded-2xl h-40 md:h-64 overflow-hidden transition-all hover:scale-105 lg:flex-col lg:h-[450px] lg:gap-0 md:rounded-none md:shadow-lg lg:hover:shadow-xl hover:rounded-xl lg:transform-none lg:pb-3"
   href=`/noticias/details/${Id}`
 >
   <div
@@ -17,7 +17,7 @@ const { Id, Noticia, Resumen, Categoria, Imagenes, CreatedAt, Autor } =
     <img
       src={Imagenes[0].thumbnails.card_cover.signedUrl}
       alt="card"
-      class="w-full h-auto card-image object-cover lg:overflow-hidden"
+      class="w-full h-auto card-image object-cover lg:overflow-hidden group-hover:grayscale-40 transition-all"
     />
     <p
       class="absolute bottom-0 left-0 px-1 py-1 bg-gray-400/50 text-white text-md"
@@ -36,7 +36,7 @@ const { Id, Noticia, Resumen, Categoria, Imagenes, CreatedAt, Autor } =
     <div
       class="hidden md:block text-sm text-gray-600 text-end border-b-2 py-2 px-1 absolute md:relative top-0 w-full lg:flex lg:flex-row lg:gap-2 lg:justify-between lg:items-center"
     >
-      <p class="md:hidden lg:block">{Autor.display_name}</p>
+      <p class="md:hidden lg:block">{Autor}</p>
       <div class="flex flex-row gap-2">
         {
           Categoria &&

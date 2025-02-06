@@ -42,10 +42,5 @@ export interface NewsItem {
   Categoria: string;
   Imagenes: ImageType[];
   CreatedAt: string;
-  Autor: {
-    id: number;
-    email: string;
-    display_name: string;
-    meta: string | null | undefined;
-  }
+  Autor: string;
 }

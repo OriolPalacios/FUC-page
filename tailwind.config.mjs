@@ -14,6 +14,9 @@ export default {
       },
       boxShadow: {
         'strong': '0 5px 10px 0 rgba(0, 0, 0, .5)',
+      },
+      grayscale: {
+        40: '.4',
       }
     },
   },
