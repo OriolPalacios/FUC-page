@@ -13,6 +13,7 @@
     "@astrojs/react": "^4.1.6",
     "@astrojs/tailwind": "^5.1.4",
     "@nanostores/react": "^0.8.4",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",

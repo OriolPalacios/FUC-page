@@ -19,7 +19,7 @@ export async function getNewsPerPage(page: number) {
       params: {
         limit: ITEMS_PER_PAGE,
         offset: (page - 1) * ITEMS_PER_PAGE,
-        fields: 'Id,Noticia,Resumen,Categoria,Imagenes,CreatedAt'
+        fields: 'Id,Noticia,Resumen,Categoria,Imagenes,CreatedAt,Autor'
       }
     })
     return response.data;

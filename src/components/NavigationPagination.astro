@@ -2,7 +2,6 @@
 import type { pageInfo } from "@customTypes/common";
 
 const { pageInfoData, currentSection } = Astro.props as { pageInfoData: pageInfo, currentSection: string };
-console.log('currentsection in navigation', currentSection);
 const { isFirstPage, isLastPage, page, totalRows, pageSize } = pageInfoData;
 const totalPages = Math.ceil(totalRows / pageSize);
 const prev = page > 1 ? page - 1 : null;
