@@ -9,9 +9,9 @@ export default defineConfig({
   integrations: [tailwind(), react()],
 
   redirects: {
-    '/noticias': '/noticias/page/1',
+    '/news': '/news/page/1',
     '/home': '/',
-    '/noticias/admin' : 'https://app.nocodb.com/#/nc/form/d6dc6d04-54a0-401e-a474-7228951f81f1'
+    '/news/admin' : 'https://app.nocodb.com/#/nc/form/d6dc6d04-54a0-401e-a474-7228951f81f1'
   },
 
   adapter: netlify()
