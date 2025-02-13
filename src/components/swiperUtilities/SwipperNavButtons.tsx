@@ -12,11 +12,11 @@ export const SwiperNavButtons = () => {
   const [isBeginning, setIsBeginning] = useState(swiper.isBeginning);
   const [isEnd, setIsEnd] = useState(swiper.isEnd);
   return (
-    <div className="swiper-nav-buttons flex justify-center gap-4 mt-5">
+    <div className="swiper-nav-buttons flex justify-center gap-4 md:gap-10 mt-5">
       <button
         type="button"
         onClick={() => swiper.slidePrev()}
-        className={`bg-red-800 text-white p-2 rounded ${isBeginning ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`bg-red-800 text-white p-2 rounded md:text-xl lg:py-3 lg:px-5 lg:hover:bg-red-700 ${isBeginning ? 'opacity-50 cursor-not-allowed' : ''}`}
         disabled={swiper.isBeginning}
       >
         Anterior
@@ -24,7 +24,7 @@ export const SwiperNavButtons = () => {
       <button
         type="button"
         onClick={() => swiper.slideNext()}
-        className={`bg-red-800 text-white p-2 rounded ${isEnd ? 'opacity-50 cursor-not-allowed' : ''}`}
+        className={`bg-red-800 text-white p-2 rounded md:text-xl lg:py-3 lg:px-5 lg:hover:bg-red-700 ${isEnd ? 'opacity-50 cursor-not-allowed' : ''}`}
         disabled={swiper.isEnd}
       >
         Siguiente
