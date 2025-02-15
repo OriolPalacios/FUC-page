@@ -1,0 +1,97 @@
+---
+export const prerender = false;
+
+import Layout from "@layouts/Layout.astro";
+
+// import document types
+
+const page = Astro.params?.page ?? "1";
+const pageNumber = parseInt(page, 10);
+let data;
+let documents;
+
+// retrieve the data and fill the data/documents variables
+---
+
+<Layout title="Documentos">
+  <!-- this is suppossed to render a grid of 2x2 rectangles per row on mb devices, and 3x3 in md and 4x4 in lg and so on -->
+  <h3 class="font-serif text-center text-xl md:text-2xl mt-5 mb-5 lg:mt-44">
+    Documentos
+  </h3>
+  <div
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-5/6 px-2 justify-center items-center mx-auto gap-4 mb-5 md:max-w-[700px]"
+  >
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+    <div
+      class="bg-red-800 w-full h-40 md:h-50 flex justify-center items-end pb-4"
+    >
+      <button
+        type="button"
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        >Ver PDF</button
+      >
+    </div>
+  </div>
+</Layout>

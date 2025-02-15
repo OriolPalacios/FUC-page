@@ -1,0 +1,19 @@
+.swiper-slide .swiper-slide-next{
+  background: transparent !important;
+}
+
+.secretariaSwiper .swiper-slide{
+  width: 60% !important;
+}
+
+@media screen and (min-width: 768px){
+  .secretariaSwiper .swiper-slide{
+    width: 300px !important;
+  } 
+}
+
+@media screen and (min-width: 1024px){
+  .secretariaSwiper .swiper-slide{
+    width: 400px !important;
+  } 
+}

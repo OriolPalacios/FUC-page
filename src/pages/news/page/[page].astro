@@ -3,9 +3,9 @@ export const prerender = false;
 
 import Layout from "@layouts/Layout.astro";
 import NewsCard from "@components/NewsCard.astro";
+import NavigationPagination from "@components/NavigationPagination.astro";
 import { getNewsPerPage } from "@services/news";
 import type { NewsItem } from "@customTypes/news";
-import NavigationPagination from "@components/NavigationPagination.astro";
 import type { pageInfo } from "@customTypes/common";
 
 const page = Astro.params?.page ?? '1';
@@ -18,7 +18,7 @@ try {
   pages = data.list;
   pageInfoData = data.pageInfo;
 } catch (error) {
-  return Astro.redirect("/noticias/page/1");
+  return Astro.redirect("/news/page/1");
 }
 ---
 
