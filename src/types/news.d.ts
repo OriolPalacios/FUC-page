@@ -1,4 +1,5 @@
 // src/types/news.ts
+import { ImageType } from "./common";
 
 export interface News {
   ID_Noticia: string; // Identificador único de la noticia
@@ -16,22 +17,6 @@ export interface NewsResponse {
   total: number; // Total de noticias disponibles
   page: number; // Página actual
   totalPages: number; // Total de páginas disponibles
-}
-
-interface ImageType {
-  url: string;
-  title: string;
-  mimetype: string;
-  size: number;
-  width: number;
-  height: number;
-  id: string;
-  thumbnails: {
-    tiny: { signedUrl: string; };
-    small: { signedUrl: string; };
-    card_cover: { signedUrl: string; };
-  };
-  signedUrl: string;
 }
 
 export interface NewsItem {
