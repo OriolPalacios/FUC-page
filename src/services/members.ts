@@ -1,4 +1,5 @@
 import api from "../utils/api";
+import type { Members } from "@customTypes/members";
 
 export async function getMembers() {
   try {
@@ -8,3 +9,19 @@ export async function getMembers() {
     console.error(error);
   }
 }
+
+export async function getMembersByGroup(secretary: string): Promise<Members[]> {
+  try {
+    const response = await api.get(import.meta.env.MIEMBROS_V1_DEFAULT_VIEW + '/records', {
+      params: {
+        where: `(Area,eq,${secretary})`,
+        fields: 'Nombre,Apellido,Cargo,Area,Telefono,Contacto,Foto'
+      }
+    });
+    return response.data.list as Members[];
+  } catch (error) {
+    console.error(error);
+    return Promise.reject(error);
+  }
+}
+

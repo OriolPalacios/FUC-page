@@ -1,12 +1,31 @@
 ---
+export const prerender = false;
+
 import Layout from "@layouts/Layout.astro";
 import JuntaDirectivaSwiper from "@components/swiperMembers/juntaDirectivaSwiper";
 import SecretariaSwiper from "@components/swiperMembers/secretariasSwiper";
+
+import { getMembersByGroup } from "@services/members";
+import type { Members } from "@customTypes/members";
+
+const secretarias: Record<string, Members[] | void> = {
+  "Secretaría de Proyección Social": undefined,
+  "Secretaría de Deportes": undefined,
+  "Secretaría de Asuntos Académicos": undefined,
+};
+
+const juntaDirectivaData = await getMembersByGroup("Junta Directiva");
+
+for (const secretaria in secretarias) {
+  secretarias[secretaria] = await getMembersByGroup(secretaria);
+}
 ---
 
 <Layout title="Members">
-  <h3 class="font-serif text-2xl mt-5 text-center mb-10 lg:mt-44">Junta Directiva</h3>
-  <JuntaDirectivaSwiper client:visible/>
-  <h3 class="font-serif text-2xl mt-5 text-center mb-10">Secretarias</h3>
-  <SecretariaSwiper client:visible/>
+  <h3 class="font-serif text-2xl md:font-bold md:text-3xl mt-5 text-center mb-10 lg:mt-44">
+    Junta Directiva
+  </h3>
+  <JuntaDirectivaSwiper boardMembers={juntaDirectivaData} client:visible />
+  <h3 class="font-serif text-2xl md:font-bold md:text-3xl mt-3 text-center mb-10 pt-10">Secretarias</h3>
+  <SecretariaSwiper secretariasData={secretarias} client:visible />
 </Layout>
