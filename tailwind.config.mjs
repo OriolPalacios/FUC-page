@@ -17,6 +17,9 @@ export default {
       },
       grayscale: {
         40: '.4',
+      },
+      willChange: {
+        'background-transform': 'background-color, transform',
       }
     },
   },
