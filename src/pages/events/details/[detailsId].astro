@@ -27,7 +27,6 @@ if (detailsId) {
 
 const { Id, Evento, Contenido, Imagen, Ubicacion, Modalidad } = data;
 const ContenidoParsed = marked.parse(Contenido);
-const imagesrc = Imagen[0].signedUrl;
 const width = Imagen[0].width;
 const height = Imagen[0].height;
 console.log(data);
@@ -40,13 +39,17 @@ console.log(data);
   >
     <h4 class="font-bold text-lg lg:text-xl font-serif text-center">{Evento}</h4>
     <img
-      src={imagesrc}
+      src={Imagen[0].signedUrl}
       alt="Event Image"
       class="h-full max-w-[300px] object-contain mx-auto"
       title="Event Image"
       width={width}
       height={height}
     />
+    <div class="flex flex-row justify-center items-center gap-2">
+      <span class="bg-amber-500 text-white w-fit text-sm font-bold p-1 rounded">{Ubicacion}</span>
+      <span class="bg-slate-400 text-white w-fit text-sm font-bold p-1 rounded">{Modalidad}</span>
+    </div>
     <SocialLinksCard id={Id} />
     <p class="text-lg font-serif md:self-start">
       <div
