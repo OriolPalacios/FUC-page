@@ -1,0 +1,61 @@
+---
+export const prerender = false;
+import unsaacBorder from "@assets/unsaacBorder.png";
+
+// components
+import Layout from "@layouts/Layout.astro";
+
+//assets
+import { Image } from "astro:assets";
+import facebookIcon from "@assets/facebookIcon.svg";
+import whatsappIcon from "@assets/whatsappIcon.svg";
+import xIcon from "@assets/xIcon.svg";
+---
+
+<Layout title="Eventos">
+  <h3
+    class="text-center font-serif font-bold text-2xl py-6 bg-red-800 text-white mb-5 lg:mt-40 lg:bg-transparent lg:text-gray-800 lg:text-4xl"
+  >
+    Eventos
+  </h3>
+  <div
+    class="w-full h-[600px] md:min-h-[800px] md:max-w-[700px] md:mx-auto flex flex-col gap-5"
+  >
+    <div
+      class="w-5/6 h-[400px] flex flex-col mx-auto inset-shadow-sm inset-shadow-indigo-500 shadow-lg rounded-lg overflow-hidden"
+    >
+      <div class="relative h-1/2">
+        <Image
+          src={unsaacBorder}
+          alt="Event Image"
+          class="h-full w-[150px] object-contain mx-auto"
+          title="Event Image"
+        />
+        <div
+          class="absolute inset-0 "
+        >
+        </div>
+      </div>
+      <div class="relative h-1/2 bg-white p-4 flex flex-col justify-between">
+        <h4 class="font-bold text-xl font-serif">Exposicion de arte</h4>
+        <span class="text-amber-500 w-fit text-sm font-bold p-1"
+          >sáb., may. 3, 11:00</span
+        >
+        <span class="text-slate-900 w-fit text-sm font-bold p-1"
+          >Meliá Lima • San Isidro, Provincia de Lima Gratis
+        </span>
+        <div class="flex space-x-2 justify-end">
+          <button class="bg-blue-500 text-white p-2 rounded">
+            <Image src={facebookIcon} alt="Facebook Icon" class="w-5 h-5" />
+          </button>
+          <button class="bg-gray-900 text-white p-2 rounded">
+            <Image src={xIcon} alt="X Icon" class="w-5 h-5 invert" />
+          </button>
+          <button class="bg-green-500 text-white p-2 rounded">
+            <Image src={whatsappIcon} alt="Whatsapp Icon" class="w-5 h-5 invert" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

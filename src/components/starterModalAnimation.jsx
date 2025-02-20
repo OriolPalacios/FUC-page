@@ -43,24 +43,24 @@ export default function StarterModalAnimation() {
       fill: '#e3a133',
       delay: 300,
     }, 2200);
-    tl.add({
-      targets: containerRef.current,
-      backgroundColor: 'rgb(116, 21, 21)',
-    }, 2200);
-    tl.add({
-      targets: containerRef.current,
-      translateY: '-100%',
-      delay: 300,
-      complete: () => {
-        document.body.style.overflow = 'auto';
-      }
-    });
+    // tl.add({
+    //   targets: containerRef.current,
+    //   backgroundColor: 'rgb(116, 21, 21)',
+    // }, 2200);
+    // tl.add({
+    //   targets: containerRef.current,
+    //   translateY: '-100%',
+    //   delay: 300,
+    //   complete: () => {
+    //     document.body.style.overflow = 'auto';
+    //   }
+    // });
   }, []);
 
   return (
-    <div className="container-modal will-change-[background-transform] h-screen lg:w-full overflow-hidden bg-red-800 px-2.5 flex flex-col items-center absolute top-0 z-50" ref={containerRef}>
+    <div className="container-modal h-screen lg:w-full overflow-hidden bg-red-900 px-2.5 flex flex-col items-center absolute top-0 z-100" ref={containerRef}>
       <div className="w-5/6 h-full flex flex-col justify-evenly items-between overflow-hidden z-100">
-        <img className="escudo opacity-0 w-auto h-40 scale-0 max-h-[400px] md:max-h z-100 mt-20 object-contain m-0" src={unsaacBorder.src} style={{ filter: 'grayscale(100%)' }} ref={escudoRef} />
+        <img className="escudo w-auto h-40 max-h-[400px] md:max-h z-100 mt-20 object-contain m-0" src={unsaacBorder.src} style={{ filter: 'grayscale(100%)' }} ref={escudoRef} />
         <div className="svg-container overflow-y-hidden w-full flex justify-center h-4/6" ref={svgContainerRef}>
           <svg className="w-full h-full lg:w-1/2" version="1.0" xmlns="http://www.w3.org/2000/svg" width="691pt" height="300pt" viewBox="0 0 691.000000 1.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,235.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
