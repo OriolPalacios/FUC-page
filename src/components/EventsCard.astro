@@ -1,0 +1,46 @@
+---
+import SocialLinksCard from "./generalUtilities/SocialLinksCard.astro";
+import Image from "astro/components/Image.astro";
+
+import type { EventsItem } from "@customTypes/events";
+
+export interface Props extends EventsItem {}
+
+const { Id, Evento, Modalidad, Imagen, FechaEvento, Ubicacion } = Astro.props;
+const isFree = Modalidad === "Registro Previo";
+const imagesrc = Imagen[0].signedUrl;
+const width = Imagen[0].width;
+const height = Imagen[0].height;
+---
+
+<div
+  class="w-[380px] h-[480px] md:w-[300px] md:h-[500px] flex flex-col mx-auto inset-shadow-sm inset-shadow-indigo-500 shadow-lg rounded-lg overflow-hidden"
+>
+  <div class="relative h-1/2">
+    <Image
+      src={imagesrc}
+      alt="Event Image"
+      class="h-full max-w-[300px] object-contain mx-auto"
+      title="Event Image"
+      width={width}
+      height={height}
+    />
+    <div class="absolute inset-0"></div>
+  </div>
+  <div class="relative h-1/2 bg-white p-4 flex flex-col justify-between">
+    <h4 class="font-bold text-lg lg:text-xl font-serif">{Evento}</h4>
+    <span class="text-amber-500 w-fit text-sm font-bold p-1">{FechaEvento}</span
+    >
+    <span class="text-slate-400 w-fit text-sm font-bold px-1"
+      >{Ubicacion}
+    </span>
+    <span
+      class={`text-white mb-2 ${isFree ? "bg-amber-600" : "bg-green-600"} w-fit text-sm font-bold p-1 rounded`}
+      >{isFree ? "Registro Previo" : "Ingreso Libre"}
+    </span>
+    <div class="flex space-x-2 justify-between">
+      <a href={`/events/details/${Id}`} class="bg-red-800 text-white py-1 px-2 rounded">Leer</a>
+      <SocialLinksCard id={Id}/>
+    </div>
+  </div>
+</div>

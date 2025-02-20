@@ -1,0 +1,59 @@
+---
+export const prerender = false;
+
+// components
+import Layout from "@layouts/Layout.astro";
+import BackArrowButton from "@components/BackArrowButton.astro";
+import Image from "astro/components/Image.astro";
+
+import { marked } from "marked";
+import { getEventsPerId } from "@services/events";
+import SocialLinksCard from "@components/generalUtilities/SocialLinksCard.astro";
+
+export interface Params {
+  detailsId: string;
+}
+
+const detailsId = Astro.params?.detailsId ?? "";
+let data;
+
+if (detailsId) {
+  try {
+    data = await getEventsPerId(detailsId);
+  } catch (error) {
+    console.error(error);
+    return Astro.redirect("/noticias/events/1");
+  }
+}
+
+const { Id, Evento, Contenido, Imagen, Ubicacion, Modalidad } = data;
+const ContenidoParsed = marked.parse(Contenido);
+const imagesrc = Imagen[0].signedUrl;
+const width = Imagen[0].width;
+const height = Imagen[0].height;
+console.log(data);
+---
+
+<Layout title=`${Evento}`>
+  <BackArrowButton />
+  <div
+    class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]"
+  >
+    <h4 class="font-bold text-lg lg:text-xl font-serif text-center">{Evento}</h4>
+    <Image
+      src={imagesrc}
+      alt="Event Image"
+      class="h-full max-w-[300px] object-contain mx-auto"
+      title="Event Image"
+      width={width}
+      height={height}
+    />
+    <SocialLinksCard id={Id} />
+    <p class="text-lg font-serif md:self-start">
+      <div
+        class="prose prose-slate self-start min-w-[100%]"
+        set:html={ContenidoParsed}
+      />
+    </p>
+  </div>
+</Layout>

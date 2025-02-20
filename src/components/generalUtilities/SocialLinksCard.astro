@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import facebookIcon from "@assets/facebookIcon.svg";
+import whatsappIcon from "@assets/whatsappIcon.svg";
+import xIcon from "@assets/xIcon.svg";
+
+const { id } = Astro.props;
+---
+
+<div class="flex flex-row gap-2">
+  <a class="bg-blue-500 text-white p-2 rounded" href={`https://www.facebook.com/sharer/sharer.php?u=federacion-universitaria-cusco.netlify.app/events/details/${id}`} target="_blank">
+    <Image src={facebookIcon} alt="Facebook Icon" class="w-5 h-5" />
+  </a>
+  <a class="bg-gray-900 text-white p-2 rounded" href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" target="_blank">
+    <Image src={xIcon} alt="X Icon" class="w-5 h-5 invert" />
+  </a>
+  <a class="bg-green-500 text-white p-2 rounded lg:hidden" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">
+    <Image src={whatsappIcon} alt="Whatsapp Icon" class="w-5 h-5 invert" />
+  </a>
+  <a class="bg-green-500 text-white p-2 rounded hidden lg:block" href="https://web.whatsapp.com/send?text=The text to share!" data-action="share/whatsapp/share" target="_blank">
+    <Image src={whatsappIcon} alt="Whatsapp Icon" class="w-5 h-5 invert" />
+  </a>
+<div/>
