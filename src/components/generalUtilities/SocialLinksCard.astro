@@ -14,10 +14,10 @@ const { id } = Astro.props;
   <a class="bg-gray-900 text-white p-2 rounded" href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false" target="_blank">
     <Image src={xIcon} alt="X Icon" class="w-5 h-5 invert" />
   </a>
-  <a class="bg-green-500 text-white p-2 rounded lg:hidden" href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">
+  <a class="bg-green-500 text-white p-2 rounded lg:hidden" href={`whatsapp://send?text=Mira el nuevo post de la FUC: federacion-universitaria-cusco.netlify.app/events/details/${id}!`} data-action="share/whatsapp/share">
     <Image src={whatsappIcon} alt="Whatsapp Icon" class="w-5 h-5 invert" />
   </a>
-  <a class="bg-green-500 text-white p-2 rounded hidden lg:block" href="https://web.whatsapp.com/send?text=The text to share!" data-action="share/whatsapp/share" target="_blank">
+  <a class="bg-green-500 text-white p-2 rounded hidden lg:block" href={`https://web.whatsapp.com/send?text=Mira el nuevo post de la FUC: federacion-universitaria-cusco.netlify.app/events/details/${id}!`} data-action="share/whatsapp/share" target="_blank">
     <Image src={whatsappIcon} alt="Whatsapp Icon" class="w-5 h-5 invert" />
   </a>
 <div/>
