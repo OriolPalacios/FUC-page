@@ -10,24 +10,47 @@ const baseUrl = `/${currentSection}/page/`;
 ---
 
 <div class="flex justify-center space-x-4 my-4">
-  {isFirstPage ? (
-    <a href={baseUrl + '1'} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
-      Primero
+  {
+    <a href={baseUrl + '1'} class={`px-4 py-2 text-white ${!isFirstPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded `}>
+      1
+    </a>
+  }
+  {prev && prev !== 1 ? (
+    <>
+      {
+        page > 3 ? (
+          <span class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+            ...
+          </span>
+        ) : null
+      } 
+      <a href={baseUrl + prev} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+        {prev}
+      </a>
+    </>
+  ) : null}
+  {page && !isFirstPage && !isLastPage ? (
+    <a href='#' class="px-4 py-2 bg-gray-900 text-white rounded hover:bg-red-700">
+      {page}
     </a>
   ) : null}
-  {prev ? (
-    <a href={baseUrl + prev} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
-      Antes
+  {
+    next && next !== totalPages && (
+      <>
+        <a href={baseUrl + next} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+          {next}
+        </a>
+        {next < totalPages - 1 && (
+          <span class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+            ...
+          </span>
+        )}
+      </>
+    )
+  }
+  {
+    <a href={baseUrl + totalPages} class={`px-4 py-2 text-white ${!isLastPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded hover:bg-red-700`}>
+      {totalPages}
     </a>
-  ) : null}
-  {next ? (
-    <a href={baseUrl + next} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
-      Siguiente
-    </a>
-  ) : null}
-  {isLastPage ? (
-    <a href={baseUrl + totalPages} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
-      Ultimo
-    </a>
-  ) : null}
+  }
 </div>
