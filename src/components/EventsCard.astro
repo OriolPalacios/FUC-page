@@ -1,6 +1,5 @@
 ---
 import SocialLinksCard from "./generalUtilities/SocialLinksCard.astro";
-import Image from "astro/components/Image.astro";
 
 import type { EventsItem } from "@customTypes/events";
 
@@ -17,7 +16,7 @@ const height = Imagen[0].height;
   class="w-[380px] h-[480px] md:w-[300px] md:h-[500px] flex flex-col mx-auto inset-shadow-sm inset-shadow-indigo-500 shadow-lg rounded-lg overflow-hidden"
 >
   <div class="relative h-1/2">
-    <Image
+    <img
       src={imagesrc}
       alt="Event Image"
       class="h-full max-w-[300px] object-contain mx-auto"

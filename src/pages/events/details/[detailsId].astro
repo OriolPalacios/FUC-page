@@ -4,7 +4,6 @@ export const prerender = false;
 // components
 import Layout from "@layouts/Layout.astro";
 import BackArrowButton from "@components/BackArrowButton.astro";
-import Image from "astro/components/Image.astro";
 
 import { marked } from "marked";
 import { getEventsPerId } from "@services/events";
@@ -40,7 +39,7 @@ console.log(data);
     class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]"
   >
     <h4 class="font-bold text-lg lg:text-xl font-serif text-center">{Evento}</h4>
-    <Image
+    <img
       src={imagesrc}
       alt="Event Image"
       class="h-full max-w-[300px] object-contain mx-auto"
