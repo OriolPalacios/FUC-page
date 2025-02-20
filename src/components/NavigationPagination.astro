@@ -11,7 +11,7 @@ const baseUrl = `/${currentSection}/page/`;
 
 <div class="flex justify-center space-x-4 my-4">
   {
-    <a href={baseUrl + '1'} class={`px-4 py-2 text-white ${!isFirstPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded `}>
+    <a id="first" href={baseUrl + '1'} class={`px-4 py-2 text-white ${!isFirstPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded `}>
       1
     </a>
   }
@@ -48,9 +48,11 @@ const baseUrl = `/${currentSection}/page/`;
       </>
     )
   }
-  {
-    <a href={baseUrl + totalPages} class={`px-4 py-2 text-white ${!isLastPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded hover:bg-red-700`}>
-      {totalPages}
-    </a>
+  { totalPages !== 1 && 
+    (
+      <a href={baseUrl + totalPages} class={`px-4 py-2 text-white ${!isLastPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded hover:bg-red-700`}>
+        {totalPages}
+      </a>
+    )
   }
 </div>

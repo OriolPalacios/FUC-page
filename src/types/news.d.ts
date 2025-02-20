@@ -12,12 +12,7 @@ export interface News {
   Responsable: string; // Persona responsable de gestionar la noticia
 }
 
-export interface NewsResponse {
-  data: News[]; // Lista de noticias
-  total: number; // Total de noticias disponibles
-  page: number; // Página actual
-  totalPages: number; // Total de páginas disponibles
-}
+export interface NewsResponse extends PaginatedResponse<News> {}
 
 export interface NewsItem {
   Id: number;

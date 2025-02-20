@@ -28,7 +28,7 @@ export async function getDocumentsPerPage(page: number) {
       params: {
         limit: DOCUMENTS_PER_PAGE,
         offset: (page - 1) * DOCUMENTS_PER_PAGE,
-        fields: 'Id,Noticia,Resumen,Categoria,Imagenes,CreatedAt,Autor' // TODO: replace with the actual data that is retrieved
+        fields: 'Id,Titulo,PDF' // TODO: replace with the actual data that is retrieved
       }
     })
     return response.data;
