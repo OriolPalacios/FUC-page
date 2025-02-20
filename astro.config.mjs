@@ -1,12 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
-
+import tailwind from '@astrojs/tailwind';
 import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-  integrations: [react()],
+  integrations: [react(), tailwind()],
 
   redirects: {
     '/news': '/news/page/1',
