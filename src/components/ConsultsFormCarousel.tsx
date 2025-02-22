@@ -76,11 +76,11 @@ export default function ConsultsFormCarousel() {
               <h3 className='mb-5 md:text-lg md:font-bold font-serif lg:text-3xl'>Ingrese su nombre y correo:</h3>
               <label className='flex flex-col text-white/50 p-2 bg-red-900 lg:w-1/2'>
                 <span className='text-sm'>Nombre:</span>
-                <input type="text" name="name" className='border bg-transparent text-lg px-1 mt-1 outline-none focus:outline-none border-l-0 border-r-0 border-t-0 border-b-1 text-white placeholder-white/50 placeholder:italic md:text-xl lg:text-2xl' placeholder='Su nombre' />
+                <input type="text" name="name" className='border bg-transparent text-lg px-1 mt-1 outline-none focus:outline-none border-l-0 border-r-0 border-t-0 border-b-1 text-white placeholder-white/50 placeholder:italic md:text-xl lg:text-2xl' placeholder='Su nombre' required/>
               </label>
               <label className='flex flex-col text-white/50 p-2 bg-red-900 lg:w-1/2'>
                 <span className='text-sm'>Correo Electronico:</span>
-                <input type="email" name="email" className='border bg-transparent text-lg px-1 mt-1 outline-none focus:outline-none border-l-0 border-r-0 border-t-0 border-b-1 text-white placeholder-white/50 placeholder:italic md:text-xl lg:text-2xl' placeholder='Su correo' />
+                <input type="email" name="email" className='border bg-transparent text-lg px-1 mt-1 outline-none focus:outline-none border-l-0 border-r-0 border-t-0 border-b-1 text-white placeholder-white/50 placeholder:italic md:text-xl lg:text-2xl' placeholder='Su correo' required/>
               </label>
             </div>
           </SwiperSlide>
@@ -92,6 +92,7 @@ export default function ConsultsFormCarousel() {
                 maxLength={1000}
                 className='h-[200px] max-h-[200px] lg:h-[300px] lg:w-3/4 lg:max-h-[400px] w-5/6 md:text-xl lg:text-2xl lg:p-5 bg-red-800/80 outline-none focus:outline-none border-0 focus:rounded-xl transition-all p-2 text-white placeholder-white/50 placeholder:italic'
                 placeholder='Escriba su consulta aquí'
+                required
               />
             </div>
           </SwiperSlide>
