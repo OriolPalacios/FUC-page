@@ -1,9 +1,9 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 // components
 import Layout from "@layouts/Layout.astro";
-import NavigationPagination from "@components/NavigationPagination.astro";
+import DocumentsPageContent from "@components/documentsComponents/DocumentsPageContent.astro"
 
 // import document types
 import type { Documents } from "@customTypes/documents";
@@ -11,6 +11,7 @@ import type { pageInfo } from "@customTypes/common";
 
 // services
 import { getDocumentsPerPage } from "@services/documents";
+import DocumentsCardSkeleton from "@components/skeletons/DocumentsCardSkeleton.astro";
 
 const page = Astro.params?.page ?? "1";
 const pageNumber = parseInt(page, 10);
@@ -22,10 +23,9 @@ try {
   documents = data.list;
   pageInfoData = data.pageInfo;
 } catch (error) {
-  return Astro.redirect("/documents/page/1");
+  return Astro.redirect("/documents/page/?page=1");
 }
 
-// retrieve the data and fill the data/documents variables
 ---
 
 <Layout title="Documentos">
@@ -36,22 +36,8 @@ try {
   <div
     class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-5/6 min-h-[400px] md:min-h-[600px] lg:min-h-fit lg:mb-20 px-2 justify-center items-center lg:items-start lg:h-fit mx-auto gap-4 mb-5 md:max-w-[700px] lg:max-w-[1000px]"
   >
-    {
-      documents.map((document) => (
-        <div
-          class="bg-red-800 w-full h-40 md:h-60 lg:h-80 lg:w-60 md:py-8 md:px-4 flex flex-col items-center justify-between items-end py-4"
-        >
-          <p class="text-white text-center font-serif md:text-xl lg:text-2xl">{document.Titulo}</p>
-          <a
-            class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
-            href={document.PDF[0].signedUrl}
-            target="_blank"
-          >
-            Ver PDF
-          </a>
-        </div>
-      ))
-    }
+    <DocumentsPageContent server:defer>
+      <DocumentsCardSkeleton slot="fallback" />
+    </DocumentsPageContent>
   </div>
-  <NavigationPagination pageInfoData={pageInfoData} currentSection="documents" />
 </Layout>

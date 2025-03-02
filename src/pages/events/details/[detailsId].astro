@@ -1,9 +1,7 @@
 ---
-export const prerender = false;
-
 // components
 import Layout from "@layouts/Layout.astro";
-import BackArrowButton from "@components/BackArrowButton.astro";
+import BackArrowButton from "@components/generalUtilities/BackArrowButton.astro";
 
 import { marked } from "marked";
 import { getEventsPerId } from "@services/events";
@@ -36,6 +34,7 @@ console.log(data);
   <BackArrowButton />
   <div
     class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]"
+    transition:animate="slide"
   >
     <h4 class="font-bold text-lg lg:text-xl font-serif text-center">{Evento}</h4>
     <img

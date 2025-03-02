@@ -1,8 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperNavButtons } from "@components/swiperUtilities/SwipperNavButtons";
 
-import user from '@assets/user.png';
-
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import '@styles/swiperOverrides.css';

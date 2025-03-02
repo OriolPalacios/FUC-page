@@ -59,9 +59,9 @@ export default function detailSecretariasSwiper({
           <div className="responsibilities mt-5 md:w-3/4 mx-auto">
             <h4 className="text-lg md:text-xl font-bold mb-2 md:text-center">Responsabilidades</h4>
             <ul className="list-disc list-inside">
-              <li className="md:text-lg">Responsabilidad 1</li>
-              <li className="md:text-lg">Responsabilidad 2</li>
-              <li className="md:text-lg">Responsabilidad 3</li>
+              <li className="md:text-lg" key='responsabilidad-1'>Responsabilidad 1</li>
+              <li className="md:text-lg" key='responsabilidad-2'>Responsabilidad 2</li>
+              <li className="md:text-lg" key='responsabilidad-3'>Responsabilidad 3</li>
             </ul>
           </div>
           <div className="fixed-contact mt-5 md:w-3/4 mx-auto">

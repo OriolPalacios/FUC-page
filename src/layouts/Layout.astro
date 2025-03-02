@@ -1,7 +1,10 @@
 ---
-import Footer from "../components/Footer.astro";
-import Navigation from "../components/Navigation.astro";
+export const prerender = true;
+
+import Footer from "@components/generalUtilities/Footer.astro";
+import Navigation from "@components/generalUtilities/Navigation.astro";
 import unsaacBorder from "@assets/unsaacBorder.png";
+import { ClientRouter } from "astro:transitions";
 
 // src/layouts/Layout.astro
 interface Props {
@@ -9,7 +12,7 @@ interface Props {
   isHeroPage?: boolean;
 }
 
-const { title, isHeroPage = false  } = Astro.props;
+const { title, isHeroPage = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,13 +21,14 @@ const { title, isHeroPage = false  } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={unsaacBorder.src} as="image" />
     <title>{title}</title>
-    <link rel="preload" href={unsaacBorder.src} as="image">
+    <ClientRouter />
   </head>
   <body class="relative">
     <Navigation isHeroPage={isHeroPage}/>
     <slot />
-    <Footer isHeroPage={isHeroPage}/>
+    <Footer isHeroPage={isHeroPage} />
   </body>
 </html>
 

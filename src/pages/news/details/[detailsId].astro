@@ -1,10 +1,8 @@
 ---
-export const prerender = false;
-
 import { marked } from "marked";
 import Layout from "@layouts/Layout.astro";
 import { getNewsPerId } from "@services/news";
-import BackArrowButton from "@components/BackArrowButton.astro";
+import BackArrowButton from "@components/generalUtilities/BackArrowButton.astro";
 
 export interface Params {
   detailsId: string;
@@ -22,7 +20,7 @@ if (detailsId) {
   }
 }
 
-const { Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
+const { Id, Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
 const ContenidoParsed = marked.parse(Contenido);
 ---
 
@@ -30,6 +28,7 @@ const ContenidoParsed = marked.parse(Contenido);
   <BackArrowButton />
   <div
     class="flex flex-col items-center justify-center gap-4 p-4 md:max-w-[700px] md:mx-auto md:min-h-[700px] md:justify-start xl:max-w-[900px]"
+    transition:animate="slide"
   >
     <h1 class="text-3xl font-bold font-serif text-center">{Noticia}</h1>
     <div class="text-gray-500 text-sm self-start flex flex-row gap-2">

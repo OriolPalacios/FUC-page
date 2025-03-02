@@ -192,14 +192,22 @@ const timelineData = {
   title="timeline-styles"
   rel="stylesheet"
   href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css"
+  media="print"
+  onload="this.media='all'"
 />
 <section class="py-10 bg-gray-50">
-  <h2 class="mb-5 text-3xl font-bold text-center font-serif">HISTORIA DE LA FUC</h2>
+  <h2 class="mb-5 text-3xl font-bold text-center font-serif">
+    HISTORIA DE LA FUC
+  </h2>
   <div id="timeline-embed" style="width: 100%; height: 600px"></div>
 </section>
 <script
   src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"
   is:inline></script>
 <script is:inline define:vars={{ timelineData }}>
-  new TL.Timeline("timeline-embed", timelineData);
+  document.addEventListener("astro:page-load", () => {
+    if (typeof TL !== "undefined") {
+      new TL.Timeline("timeline-embed", timelineData);
+    }
+  });
 </script>
