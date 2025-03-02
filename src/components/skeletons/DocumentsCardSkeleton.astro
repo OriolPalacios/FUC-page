@@ -1,0 +1,15 @@
+---
+const numberOfSkeletons = 8;
+---
+
+{
+  Array.from({ length: numberOfSkeletons }).map(() => (
+    <div class="bg-red-800/50 w-full h-40 md:h-60 lg:h-80 lg:w-60 md:py-8 md:px-4 flex flex-col items-center justify-between items-end py-4 animate-pulse">
+      {/* Title placeholder */}
+      <div class="w-3/4 h-16 md:h-24 bg-white/20 rounded"></div>
+      
+      {/* Button placeholder */}
+      <div class="w-20 h-8 bg-yellow-700/50 rounded-md"></div>
+    </div>
+  ))
+}

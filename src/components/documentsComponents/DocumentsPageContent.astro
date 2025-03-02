@@ -1,0 +1,44 @@
+---
+// import document types
+import type { Documents } from "@customTypes/documents";
+import type { pageInfo } from "@customTypes/common";
+
+// services
+import { getDocumentsPerPage } from "@services/documents";
+import NavigationPagination from "@components/generalUtilities/NavigationPagination.astro";
+
+const referer = Astro.request.headers.get("Referer") as string;
+const url = new URL(referer);
+const page = url.searchParams.get("page") || "1";
+const pageNumber = parseInt(page, 10);
+let data;
+let documents: Documents[];
+let pageInfoData: pageInfo;
+try {
+  data = await getDocumentsPerPage(pageNumber);
+  documents = data.list;
+  pageInfoData = data.pageInfo;
+} catch (error) {
+  return Astro.redirect("/documents/page/?page=1");
+}
+---
+
+{
+  documents.map((document) => (
+    <div class="bg-red-800 w-full h-40 md:h-60 lg:h-80 lg:w-60 md:py-8 md:px-4 flex flex-col items-center justify-between items-end py-4">
+      <p class="text-white text-center font-serif md:text-xl lg:text-2xl">
+        {document.Titulo}
+      </p>
+      <a
+        class="bg-yellow-700 text-white px-2 py-1 rounded-md h-fit"
+        href={document.PDF[0].signedUrl}
+        target="_blank"
+      >
+        Ver PDF
+      </a>
+    </div>
+  ))
+}
+<div class="row-start-auto col-span-full ">
+  <NavigationPagination pageInfoData={pageInfoData} currentSection="documents" />
+</div>
