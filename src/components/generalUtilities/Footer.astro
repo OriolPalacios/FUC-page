@@ -5,31 +5,31 @@ import instagramIcon from "@assets/instagramIcon.svg";
 import tiktokIcon from "@assets/tiktokIcon.svg";
 import linkedinIcon from "@assets/linkedinIcon.svg";
 import unsaacBorder from "@assets/unsaacBorder.png";
+import { Image } from "astro:assets";
 
-const socialLinks: { name: string; link: string; icon: string }[] = [
+const socialLinks: { name: string; link: string; icon: ImageMetadata }[] = [
   {
     name: "Facebook",
     link: "https://www.facebook.com/GLORIOSAFUC/?locale=es_LA",
-    icon: facebookIcon.src,
+    icon: facebookIcon,
   },
   {
     name: "Instagram",
     link: "https://www.instagram.com/federacionuniversitariacusco/",
-    icon: instagramIcon.src,
+    icon: instagramIcon,
   },
   {
     name: "TikTok",
     link: "https://www.tiktok.com/@fuc.unsaac",
-    icon: tiktokIcon.src,
+    icon: tiktokIcon,
   },
   {
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/federaci%C3%B3n-universitaria-del-cusco-061621314/",
-    icon: linkedinIcon.src,
+    icon: linkedinIcon,
   },
 ];
 
-const { isHeroPage } = Astro.props;
 ---
 
 <footer class="pt-12 pb-6 text-white bg-black mt-auto w-full overflow-hidden">
@@ -51,9 +51,11 @@ const { isHeroPage } = Astro.props;
           {
             socialLinks.map((value, index) => (
               <a href={value.link}>
-                <img
+                <Image
                   src={value.icon}
                   alt={`${value.name} icon`}
+                  width={24}
+                  height={24}
                   class="h-6 w-6 inline-block mr-2 text-white"
                 />
                 <span>{value.name}</span>
@@ -73,7 +75,7 @@ const { isHeroPage } = Astro.props;
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="justify-self-center">
-        <img src={unsaacBorder.src} alt="FUC Logo" class="h-28" />
+        <Image src={unsaacBorder} alt="FUC Logo" class="h-28" width={81} />
       </div>
       <p class="col-span-2 self-center lg:col-span-4 text-center">
         <a

@@ -1,0 +1,47 @@
+---
+// Number of skeleton cards to show
+const numberOfSkeletons = 4;
+---
+
+{
+  Array.from({ length: numberOfSkeletons }).map(() => (
+    <>
+      <div class="flex group flex-row w-full gap-2 md:rounded-2xl h-40 md:h-64 overflow-hidden lg:flex-col lg:h-[450px] lg:gap-0 md:rounded-none md:shadow-lg lg:pb-3 animate-pulse">
+        <!-- Image placeholder -->
+        <div class="bg-gray-300 w-1/2 h-full relative lg:w-full lg:h-5/6">
+          <!-- Date placeholder -->
+          <div class="absolute bottom-0 left-0 w-20 h-6 bg-gray-400/70"></div>
+        </div>
+        
+        <div class="relative w-1/2 flex flex-col align-center justify-center content-between lg:w-full lg:h-auto lg:px-4">
+          <!-- Category placeholder (mobile) -->
+          <div class="block md:hidden w-full h-6 bg-gray-200 absolute top-0"></div>
+          
+          <!-- Category and author placeholder (tablet/desktop) -->
+          <div class="hidden md:block w-full h-8 bg-gray-200 absolute md:relative top-0 lg:flex lg:gap-2">
+            <!-- Author placeholder (desktop) -->
+            <div class="hidden lg:block w-20 h-6 bg-gray-300"></div>
+            <!-- Categories placeholder -->
+            <div class="flex gap-2 ml-auto">
+              <div class="w-16 h-6 bg-red-100"></div>
+              <div class="w-16 h-6 bg-red-100"></div>
+            </div>
+          </div>
+          
+          <!-- Title placeholder -->
+          <div class="w-5/6 h-6 bg-gray-300 mx-auto mt-8"></div>
+          <div class="w-3/4 h-6 bg-gray-300 mx-auto mt-2"></div>
+          
+          <!-- Summary placeholder (tablet/desktop) -->
+          <div class="hidden md:block mt-4 space-y-2">
+            <div class="w-full h-4 bg-gray-200"></div>
+            <div class="w-full h-4 bg-gray-200"></div>
+            <div class="w-3/4 h-4 bg-gray-200"></div>
+            <div class="w-5/6 h-4 bg-gray-200"></div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-yellow-800/50" />
+    </>
+  ))
+}

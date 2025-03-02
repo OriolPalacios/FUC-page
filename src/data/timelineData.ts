@@ -1,0 +1,181 @@
+// src/data/timelineData.ts
+
+const timelineData = {
+    title: {
+      background: {
+        url: infraestructura.src,
+      },
+      media: {
+        caption: "Historia de la Federación Universitaria Cusco (FUC)",
+        credit: "Fuente: Tesis Eleazar Crucinta Ugarte, 2017",
+      },
+      text: {
+        headline: "Hitos de la Federación Universitaria Cusco (FUC)",
+        text: "Acontecimientos clave en la formación y desarrollo político de la FUC.",
+      },
+    },
+    eras: [
+      {
+        start_date: {
+          year: "1940",
+        },
+        end_date: {
+          year: "1949",
+        },
+        text: {
+          headline: "Formación y Primeros Años",
+          text: "Período de formación de la FUC, marcado por la creación de la Asociación Sindical Universitaria (ASU) y la transición hacia la FUC en 1947.",
+        },
+      },
+      {
+        start_date: {
+          year: "1950",
+        },
+        end_date: {
+          year: "1959",
+        },
+        text: {
+          headline: "Luchas por el Cogobierno y Reforma Universitaria",
+          text: "Etapa de lucha estudiantil por el cogobierno universitario, culminando en la histórica asamblea de 1957 y la consolidación de la reforma universitaria.",
+        },
+      },
+      {
+        start_date: {
+          year: "1960",
+        },
+        end_date: {
+          year: "1970",
+        },
+        text: {
+          headline: "Institucionalización del Cogobierno",
+          text: "Período de consolidación del cogobierno universitario bajo la Ley 13417 de 1960, con participación estudiantil en la gestión universitaria.",
+        },
+      },
+    ],
+    events: [
+      {
+        background: {
+          url: fundacion.src,
+        },
+        start_date: {
+          year: "1947",
+          month: "7",
+          day: "18",
+        },
+        text: {
+          headline: "Fundación de la FUC",
+          text: "La FUC se establece oficialmente el 18 de julio de 1947, reemplazando a la Asociación Sindical Universitaria (ASU), bajo el estatuto universitario de 1946 que promovía la participación estudiantil en el cogobierno.",
+        },
+      },
+      {
+        media: {
+          url: "",
+          caption: "",
+          credit: "",
+        },
+        background: {
+          url: comision.src,
+        },
+        start_date: {
+          year: "1947",
+          month: "7",
+          day: "23",
+        },
+        text: {
+          headline: "Primera Junta Directiva de la FUC",
+          text: "Se conforma la primera directiva de la FUC con Hermógenes Casaverde como presidente, marcando el inicio formal de su estructura organizativa.",
+        },
+      },
+      {
+        media: {
+          url: terremoto.src,
+          caption: "",
+          credit: "",
+        },
+        background: {
+          color: "gray",
+        },
+        start_date: {
+          year: "1950",
+        },
+        text: {
+          headline: "Terremoto en Cusco",
+          text: "El terremoto de 1950 impacta al Cusco, generando reconstrucción liderada por el gobierno de Odría, lo que limitó temporalmente las protestas estudiantiles.",
+        },
+      },
+      {
+        media: {
+          url: "<blockquote>Estudiantes y docentes realizan una histórica asamblea que establece la Junta Reorganizadora de la UNSAAC, exigiendo cogobierno y autonomía universitaria bajo liderazgo del presidente de la FUC, Mario </blockquote>",
+          caption: "",
+          credit: "",
+        },
+        start_date: {
+          year: "1957",
+          month: "9",
+          day: "26",
+        },
+        text: {
+          headline: "Asamblea Magna por la Reforma Universitaria",
+          text: " ",
+        },
+        background: {
+          url: blueOld.src,
+        },
+      },
+      {
+        media: {
+          url: "https://es.wikipedia.org/wiki/Valent%C3%ADn_Paniagua",
+          caption: "",
+          credit: "",
+          thumbnail: valentin.src,
+        },
+        background: {
+          url: fondoOld.src,
+        },
+        start_date: {
+          year: "1959",
+        },
+        text: {
+          headline: "Nueva Dirección Estudiantil",
+          text: "Valentín Paniagua asume la presidencia de la FUC, impulsando el comedor universitario y consolidando una etapa de reivindicaciones sociales.",
+        },
+      },
+      {
+        media: {
+          url: lawFondo.src,
+          link: "https://www.leyes.congreso.gob.pe/Documentos/Leyes/13417.pdf",
+          caption: "",
+          credit: "",
+        },
+        start_date: {
+          year: "1960",
+        },
+        text: {
+          headline: "Ley 13417 y Cogobierno Institucionalizado",
+          text: "El gobierno de Manuel Prado promulga la Ley 13417, que consagra el cogobierno universitario con participación estudiantil, influenciada por las luchas iniciadas en el Cusco en 1957.",
+        },
+        background: {
+          color: "#6b0f0f",
+        },
+      },
+      {
+        media: {
+          url: "https://es.wikipedia.org/wiki/Luis_Enrique_Sald%C3%ADvar_Romainville",
+          caption: "",
+          credit: "",
+        },
+        start_date: {
+          year: "1960",
+        },
+        text: {
+          headline: "Elección de Nuevas Autoridades Universitarias",
+          text: "Luis E. Saldivar es elegido rector bajo el nuevo estatuto, consolidando el modelo de cogobierno con representación estudiantil en el Consejo Universitario.",
+        },
+        background: {
+          color: "#efbf04",
+        },
+      },
+    ],
+  };
+
+export default timelineData;

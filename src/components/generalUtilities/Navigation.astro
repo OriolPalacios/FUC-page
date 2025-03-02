@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import escudoUnsaac from "../assets/escudoUnsaac.png";
-import Hamburguer from "./Hamburguer.astro";
-import Home from "./Home.astro";
+import escudoUnsaac from "@assets/escudoUnsaac.png";
+import Hamburguer from "@components/generalUtilities/Hamburguer.astro";
+import Home from "@components/generalUtilities/Home.astro";
 
 interface Props {
   isHeroPage: boolean;
@@ -18,10 +18,15 @@ const { isHeroPage = false } = Astro.props;
     <div
       class="flex w-full flex-col px-5 py-5 items-center justify-evenly lg:px-0 lg:flex-row lg:justify-between lg:backdrop-blur-sm"
     >
-      <a href=`${isHeroPage ? '#' : '/home'}` class="hidden lg:block fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-20">
+      <a
+        href='/home'
+        class={`hidden lg:block fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-20 ${isHeroPage ? `pointer-events-none` : ''}`}
+        
+      >
         <Image
           src={escudoUnsaac}
           alt="Logo de la universidad"
+          loading="eager"
         />
       </a>
       <div
@@ -31,19 +36,22 @@ const { isHeroPage = false } = Astro.props;
           <a
             href="/news"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
-            >NOTICIAS</a>
-        </div>
-        <div class="relative">
-          <a
-            href="/consults"
-            class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
-            >CONSULTAS</a>
+            >NOTICIAS</a
+          >
         </div>
         <div class="relative">
           <a
             href="/documents"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
-            >DOCUMENTOS</a>
+            >DOCUMENTOS</a
+          >
+        </div>
+        <div class="relative">
+          <a
+            href="/events"
+            class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
+            >EVENTOS</a
+          >
         </div>
       </div>
       <div
@@ -51,23 +59,18 @@ const { isHeroPage = false } = Astro.props;
       >
         <div class="relative">
           <a
-            href="/events"
+            href="/members"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
-            >EVENTOS</a>
+            >MIEMBROS</a
+          >
         </div>
         <div class="relative">
           <a
-            href="/members"
+            href="/consults"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
-            >MIEMBROS</a>
+            >CONSULTAS y DENUNCIAS</a
+          >
         </div>
-        <!-- this part of the page has been disable under agreement with the client with possibility to implement it later under a new contract -->
-        <!-- <div class="relative">
-          <a
-            href="#"
-            class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
-            >GALERÍA</a>
-        </div> -->
       </div>
     </div>
   </div>
@@ -75,10 +78,11 @@ const { isHeroPage = false } = Astro.props;
   <Hamburguer />
 </nav>
 <script>
-  const toggleNav = () => {
-    const line = document.querySelector(".line");
-    document.querySelector(".nav-links")?.classList.toggle("-translate-x-full");
-  };
-  const menu = document.querySelector(".hamburguer");
-  menu?.addEventListener("click", () => toggleNav());
+  document.addEventListener('astro:page-load', () => {
+    const toggleNav = () => {
+      document.querySelector(".nav-links")?.classList.toggle("-translate-x-full");
+    };
+    const menu = document.querySelector(".hamburguer");
+    menu?.addEventListener("click", () => toggleNav()); 
+  })
 </script>
