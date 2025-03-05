@@ -5,15 +5,12 @@ import { slide } from "astro:transitions";
 import Layout from "@layouts/Layout.astro";
 import NewsPageContent from "@components/newsComponents/NewsPageContent.astro";
 import NewsCardSkeleton from "@components/skeletons/NewsCardSkeleton.astro";
+import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 
 ---
 
 <Layout title="Noticias">
-  <h3
-    class="text-center font-serif font-bold text-2xl py-6 bg-red-800 text-white mb-5 lg:mt-40 lg:bg-transparent lg:text-gray-800 lg:text-4xl"
-  >
-    Noticias
-  </h3>
+  <CommonHeaderTitle title="Noticias" />
   <div
     class="cards-container flex flex-col gap-5 min-h-[500px] md:min-h-[800px] md:max-w-[700px] md:mx-auto w-full"
   >

@@ -5,13 +5,10 @@ export const prerender = true;
 import Layout from "@layouts/Layout.astro";
 import EventsPageContent from "@components/eventsComponents/EventsPageContent.astro";
 import EventsCardSkeleton from "@components/skeletons/EventsCardSkeleton.astro";
+import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 ---
 <Layout title="Eventos">
-  <h3
-    class="text-center font-serif font-bold text-2xl py-6 bg-red-800 text-white mb-5 lg:mt-40 lg:bg-transparent lg:text-gray-800 lg:text-4xl"
-  >
-    Eventos
-  </h3>
+  <CommonHeaderTitle title="Eventos" />
   <div
     class="w-full min-h-[600px] md:min-h-[800px] md:max-w-[700px] lg:max-w-[950px] md:mx-auto"
   >

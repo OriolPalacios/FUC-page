@@ -3,7 +3,7 @@ export const prerender = true;
 
 // components
 import Layout from "@layouts/Layout.astro";
-import DocumentsPageContent from "@components/documentsComponents/DocumentsPageContent.astro"
+import DocumentsPageContent from "@components/documentsComponents/DocumentsPageContent.astro";
 
 // import document types
 import type { Documents } from "@customTypes/documents";
@@ -12,6 +12,7 @@ import type { pageInfo } from "@customTypes/common";
 // services
 import { getDocumentsPerPage } from "@services/documents";
 import DocumentsCardSkeleton from "@components/skeletons/DocumentsCardSkeleton.astro";
+import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 
 const page = Astro.params?.page ?? "1";
 const pageNumber = parseInt(page, 10);
@@ -25,14 +26,10 @@ try {
 } catch (error) {
   return Astro.redirect("/documents/page/?page=1");
 }
-
 ---
 
 <Layout title="Documentos">
-  <!-- this is suppossed to render a grid of 2x2 rectangles per row on mb devices, and 3x3 in md and 4x4 in lg and so on -->
-  <h3 class="font-serif text-center text-xl md:text-2xl mt-5 mb-5 lg:mt-44">
-    Documentos
-  </h3>
+  <CommonHeaderTitle title="Documentos" />
   <div
     class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-5/6 min-h-[400px] md:min-h-[600px] lg:min-h-fit lg:mb-20 px-2 justify-center items-center lg:items-start lg:h-fit mx-auto gap-4 mb-5 md:max-w-[700px] lg:max-w-[1000px]"
   >
