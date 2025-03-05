@@ -13,9 +13,11 @@ import type { Members } from '@customTypes/members';
 import DetailSecretariasSwiper from './detailSecretariasSwiper';
 
 export default function SecretariaSwiper({
-  secretariasData
+  secretariasData,
+  secretaryInfo
 }: {
-  secretariasData: Record<string, Members[] | void>
+  secretariasData: Record<string, Members[] | void>;
+  secretaryInfo: Record<string, string[]>;
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeSecretaria, setActiveSecretaria] = useState<string | null>(null);
@@ -69,7 +71,7 @@ export default function SecretariaSwiper({
         </Swiper>
 
         {modalOpen && activeSecretaria && (
-          <DetailSecretariasSwiper activeSecretaria={activeSecretaria} actualMembers={secretariasData[activeSecretaria]} closeModal={closeModal} />
+          <DetailSecretariasSwiper activeSecretaria={activeSecretaria} actualMembers={secretariasData[activeSecretaria]} secretaryInfo={secretaryInfo[activeSecretaria]} closeModal={closeModal} />
         )}
       </div>
     </>

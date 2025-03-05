@@ -9,17 +9,21 @@ import type { Members } from "@customTypes/members";
 export default function detailSecretariasSwiper({
   activeSecretaria,
   actualMembers,
+  secretaryInfo,
   closeModal
 }: {
   activeSecretaria: string,
   actualMembers: Members[] | void,
+  secretaryInfo: string[],
   closeModal: () => void
 }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-serif p-5">
       <div className="bg-white rounded w-full lg:w-[800px] shadow-xl shadow-gray-8 00 mx-auto rounded-xl overflow-hidden pb-2">
         <div className="header bg-red-900 flex flex-row items-center justify-center py-4 px-5 justify-between ">
-          <div className='logo-container w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-200'></div>
+          <div className='logo-container w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-200'>
+
+          </div>
           <h3 className="text-lg md:text-2xl text-white font-bold text-center">{activeSecretaria}</h3>
           <div
             className="mr-2 w-6 h-6 relative cursor-pointer"
@@ -53,21 +57,21 @@ export default function detailSecretariasSwiper({
                 ))}
               </Swiper>
             ) : (
-              <li className="text-center text-red-500">Hubo un error con la base de datos. Por favor, inténtelo más tarde.</li>
+              <li className="text-center text-red-500">Hubo un error con la base de datos. Por favor, vuelva más tarde.</li>
             )}
           </div>
           <div className="responsibilities mt-5 md:w-3/4 mx-auto">
             <h4 className="text-lg md:text-xl font-bold mb-2 md:text-center">Responsabilidades</h4>
             <ul className="list-disc list-inside">
-              <li className="md:text-lg" key='responsabilidad-1'>Responsabilidad 1</li>
-              <li className="md:text-lg" key='responsabilidad-2'>Responsabilidad 2</li>
-              <li className="md:text-lg" key='responsabilidad-3'>Responsabilidad 3</li>
+              <li className="md:text-lg" key='responsabilidad-1'>{secretaryInfo[0]}</li>
+              <li className="md:text-lg" key='responsabilidad-2'>{secretaryInfo[1]}</li>
+              <li className="md:text-lg" key='responsabilidad-3'>{secretaryInfo[2]}</li>
             </ul>
           </div>
           <div className="fixed-contact mt-5 md:w-3/4 mx-auto">
             <h4 className="text-lg font-bold mb-2 text-center md:text-gray-600">Contacto Fijo</h4>
-            <p className="text-sm md:text-md md:text-center md:text-gray-600">Email: secretaria@example.com</p>
-            <p className="text-sm md:text-md md:text-center md:text-gray-600">Teléfono: +34 123 456 789</p>
+            <p className="text-sm md:text-md md:text-center md:text-gray-600">Email: {secretaryInfo[3]}</p>
+            <p className="text-sm md:text-md md:text-center md:text-gray-600">Teléfono: {secretaryInfo[4]}</p>
           </div>
         </div>
       </div>

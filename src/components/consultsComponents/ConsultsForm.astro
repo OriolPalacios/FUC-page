@@ -3,5 +3,36 @@ import ConsultsFormCarousel from "@components/consultsComponents/ConsultsFormCar
 ---
 
 <div class="container">
-  <ConsultsFormCarousel client:visible/>
+  <ConsultsFormCarousel client:visible />
 </div>
+
+<style is:global>
+  @layer {
+    @property --send-1 {
+      syntax: "<color>";
+      initial-value: theme(colors.red.700);
+      inherits: false;
+    }
+
+    @property --send-2 {
+      syntax: "<color>";
+      initial-value: theme(colors.gray.950);
+      inherits: false;
+    }
+
+    #send-consult-btn {
+      display: inline-block;
+      background: linear-gradient(to left, var(--send-1), var(--send-2));
+      transition:
+        --send-1 1s ease-in-out,
+        --send-2 1s ease-in-out,
+        transform 200ms ease-in-out;
+    }
+
+    #send-consult-btn:hover {
+      --send-1: theme(colors.gray.800);
+      --send-2: theme(colors.red.500);
+      transform: scale(110%);
+    }
+  }
+</style>

@@ -22,7 +22,7 @@ export default function JuntaDirectivaSwiper({
       >
         {boardMembers.map((member, index) => (
           <SwiperSlide key={index}>
-            <div className="w-full bg-red-800 h-[230px] md:h-[350px] lg:h-[350px] lg:h-full mx-auto flex flex-col justify-evenly items-center rounded-xl">
+            <div className="w-full bg-red-800 h-[230px] md:h-[350px]  mx-auto flex flex-col justify-evenly items-center rounded-xl">
               <div>
               <h4 className='text-center md:text-xl lg:text-xl lg:italic font-serif text-white'>{member.Cargo}</h4>
               <h4 className='text-center md:text-2xl lg:text-2xl font-serif mb-2 text-white'>{member.Nombre} {member.Apellido}</h4>
