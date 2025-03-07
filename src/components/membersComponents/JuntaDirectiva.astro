@@ -1,9 +1,8 @@
 ---
 import JuntaDirectivaSwiper from "./swiperMembers/juntaDirectivaSwiper";
-import { getMembersByGroup } from "@services/members";
+import { getMembersJuntaDirectiva } from "@services/members";
 
-const juntaDirectivaData = await getMembersByGroup("Junta Directiva");
-
+const juntaDirectivaData = await getMembersJuntaDirectiva();
 ---
 
 <JuntaDirectivaSwiper boardMembers={juntaDirectivaData} client:visible />

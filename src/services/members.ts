@@ -10,11 +10,11 @@ export async function getMembers() {
   }
 }
 
-export async function getMembersByGroup(secretary: string): Promise<Members[]> {
+export async function getMembersJuntaDirectiva(): Promise<Members[]> {
   try {
     const response = await api.get(import.meta.env.MIEMBROS_V1_DEFAULT_VIEW + '/records', {
       params: {
-        where: `(Area,eq,${secretary})`,
+        where: `(Area,eq,Junta Directiva)`,
         fields: 'Nombre,Apellido,Cargo,Area,Telefono,Contacto,Foto'
       }
     });
@@ -25,3 +25,17 @@ export async function getMembersByGroup(secretary: string): Promise<Members[]> {
   }
 }
 
+export async function getMembersSecretaries(): Promise<Members[]> {
+  try {
+    const response = await api.get(import.meta.env.MIEMBROS_V1_DEFAULT_VIEW + '/records', {
+      params: {
+        where: `(Area,neq,Junta Directiva)`,
+        fields: 'Nombre,Apellido,Cargo,Area,Telefono,Contacto,Foto'
+      }
+    });
+    return response.data.list as Members[];
+  } catch (error) {
+    console.error(error);
+    return Promise.reject(error);
+  }
+}
