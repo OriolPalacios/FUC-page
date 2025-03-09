@@ -27,7 +27,10 @@ const { Id, Evento, Contenido, Imagen, Ubicacion, Modalidad } = data;
 const ContenidoParsed = marked.parse(Contenido);
 const width = Imagen[0].width;
 const height = Imagen[0].height;
-console.log(data);
+
+Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, s-maxage=300, stale-while-revalidate=3500')
+Astro.response.headers.set("netlify-cache-tag", detailsId);
 ---
 
 <Layout title=`${Evento}`>

@@ -20,9 +20,6 @@ try {
   return Astro.redirect("/news/page/?page=1");
 }
 
-
-console.log("Current page:", page);
-console.log("Using query param directly: ", new URL(Astro.request.url));
 ---
 
 {pages && (pages as NewsItem[]).map((newsItem) => <NewsCard {...newsItem} />)}
