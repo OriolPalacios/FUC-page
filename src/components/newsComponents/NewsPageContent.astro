@@ -19,7 +19,6 @@ try {
 } catch (error) {
   return Astro.redirect("/news/page/?page=1");
 }
-
 ---
 
 {pages && (pages as NewsItem[]).map((newsItem) => <NewsCard {...newsItem} />)}
