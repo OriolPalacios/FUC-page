@@ -25,7 +25,7 @@ const ContenidoParsed = marked.parse(Contenido);
 
 Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
 Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, s-maxage=300, stale-while-revalidate=3500')
-Astro.response.headers.set("netlify-cache-tag", detailsId);
+Astro.response.headers.set("Netlify-Vary", `section=events&id=${Id}`);
 ---
 
 <Layout title=`${Noticia}`>
