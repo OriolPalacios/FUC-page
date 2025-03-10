@@ -10,6 +10,16 @@ The FUC Website Project is an information portal for the Federación Universitar
 * **Consultation/Complaint Submission**: A system for users to submit queries and feedback.
 * **Historical Information**: An archive of the federation’s milestones and achievements.
 
+## Features
+
+- **Enhanced Performance**: Configured for optimal performance with Netlify CDN, using advanced caching headers (e.g., `Netlify-CDN-Cache-Control` and `Netlify-Vary`) to ensure fast content delivery.
+- **Server-Side Rendering (SSR)**: Pages are rendered on the server for improved SEO, faster initial load times, and better performance on low-powered devices.
+- **Incremental Static Regeneration (ISR)**: Combines the benefits of static generation with the ability to update content dynamically, ensuring both performance and freshness.
+- **Astro View Transitions**: Smooth transitions between pages enhance user experience (`just for stricly static pages`).
+- **Responsive Design**: Built with Tailwind CSS to ensure the site looks great on all devices.
+- **Interactive UI Components**: Powered by React for client-side interactions where needed.
+
+
 ## Technology Stack
 
 This project is built with:

@@ -19,9 +19,8 @@ const { isHeroPage = false } = Astro.props;
       class="flex w-full flex-col px-5 py-5 lg:py-2 items-center justify-evenly lg:px-0 lg:flex-row lg:justify-between lg:backdrop-blur-sm lg:h-fit"
     >
       <a
-        href='/home'
-        class={`hidden lg:block fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-20 ${isHeroPage ? `pointer-events-none` : ''}`}
-        
+        href="/home"
+        class={`hidden lg:block fuc-back-image self-start w-9 absolute top-7 right-7 lg:order-2 lg:top-0 lg:right-0 lg:relative lg:top-auto lg:left-auto lg:w-20 ${isHeroPage ? `pointer-events-none` : ""}`}
       >
         <Image
           src={escudoUnsaac}
@@ -34,21 +33,24 @@ const { isHeroPage = false } = Astro.props;
       >
         <div class="relative">
           <a
-            href="/news"
+            data-astro-reload
+            href="/news/page/?page=1"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
             >NOTICIAS</a
           >
         </div>
         <div class="relative">
           <a
-            href="/documents"
+            data-astro-reload
+            href="/documents/page/?page=1"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
             >DOCUMENTOS</a
           >
         </div>
         <div class="relative">
           <a
-            href="/events"
+            data-astro-reload
+            href="/events/page/?page=1"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
             >EVENTOS</a
           >
@@ -59,6 +61,7 @@ const { isHeroPage = false } = Astro.props;
       >
         <div class="relative">
           <a
+            data-astro-reload
             href="/members"
             class="after:w-full after:h-px after:bg-gray-100 after:absolute after:bottom-0 after:left-0 after:origin-center after:scale-0 after:hover:scale-100 after:transition-transform"
             >MIEMBROS</a
@@ -78,11 +81,13 @@ const { isHeroPage = false } = Astro.props;
   <Hamburguer />
 </nav>
 <script>
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     const toggleNav = () => {
-      document.querySelector(".nav-links")?.classList.toggle("-translate-x-full");
+      document
+        .querySelector(".nav-links")
+        ?.classList.toggle("-translate-x-full");
     };
     const menu = document.querySelector(".hamburguer");
-    menu?.addEventListener("click", () => toggleNav()); 
-  })
+    menu?.addEventListener("click", () => toggleNav());
+  });
 </script>
