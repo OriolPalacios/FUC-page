@@ -2,7 +2,7 @@
 // components
 import Layout from "@layouts/Layout.astro";
 import BackArrowButton from "@components/generalUtilities/BackArrowButton.astro";
-import {CacheHeaders, ONE_HOUR} from 'cdn-cache-control';
+import {CacheHeaders} from 'cdn-cache-control';
 import { marked } from "marked";
 import { getEventsPerId } from "@services/events";
 import SocialLinksCard from "@components/generalUtilities/SocialLinksCard.astro";
@@ -28,7 +28,7 @@ const ContenidoParsed = marked.parse(Contenido);
 const width = Imagen[0].width;
 const height = Imagen[0].height;
 
-const headers = new CacheHeaders({}, "netlify").swr(500).ttl(ONE_HOUR).tag(['events', `events-page-detail-${Id}`]);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['events', `events-page-detail-${Id}`]);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 

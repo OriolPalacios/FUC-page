@@ -2,7 +2,7 @@
 import EventsCard from "@components/eventsComponents/EventsCard.astro";
 import NavigationPagination from "@components/generalUtilities/NavigationPagination.astro";
 import { getEventsPerPage } from "@services/events";
-import {CacheHeaders, ONE_HOUR} from "cdn-cache-control";
+import {CacheHeaders } from "cdn-cache-control";
 import type { EventsItem } from "@customTypes/events";
 import type { pageInfo } from "@customTypes/common";
 
@@ -21,7 +21,7 @@ try {
   return Astro.redirect("/events/page/1");
 }
 
-const headers = new CacheHeaders({}, "netlify").swr(500).ttl(ONE_HOUR).tag(['news', `news-page-${page}`]);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-${page}`]);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 

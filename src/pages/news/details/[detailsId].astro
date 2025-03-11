@@ -3,7 +3,7 @@ import { marked } from "marked";
 import Layout from "@layouts/Layout.astro";
 import { getNewsPerId } from "@services/news";
 import BackArrowButton from "@components/generalUtilities/BackArrowButton.astro";
-import { CacheHeaders, ONE_HOUR } from 'cdn-cache-control';
+import { CacheHeaders } from 'cdn-cache-control';
 
 export interface Params {
   detailsId: string;
@@ -24,7 +24,7 @@ if (detailsId) {
 const { Id, Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
 const ContenidoParsed = marked.parse(Contenido);
 
-const headers = new CacheHeaders({}, "netlify").swr(500).ttl(ONE_HOUR).tag(['news', `news-page-detail-${Id}`]);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-detail-${Id}`]);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 

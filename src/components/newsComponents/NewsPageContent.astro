@@ -5,7 +5,7 @@ import { getNewsPerPage } from "@services/news";
 import type { NewsItem } from "@customTypes/news";
 import type { pageInfo } from "@customTypes/common";
 
-import { CacheHeaders, ONE_HOUR } from "cdn-cache-control";
+import { CacheHeaders } from "cdn-cache-control";
 
 const referer = Astro.request.headers.get("Referer") as string;
 const url = new URL(referer);
@@ -22,7 +22,7 @@ try {
   return Astro.redirect("/news/page/?page=1")``;
 }
 
-const headers = new CacheHeaders({}, "netlify").swr(500).ttl(ONE_HOUR).tag(['news', `news-page-${page}`]);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-${page}`]);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 
