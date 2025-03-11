@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
   if (request.headers.get("X-Contentful-Webhook-Secret") !== import.meta.env.CONTENTFUL_WEBHOOK_SECRET) {
-    return new Response("Unauthorized", { status: 401 });
+    return new Response(`Unauthorized!, the actual response is ${import.meta.env.CONTENTFUL_WEBHOOK_SECRET} or ${process.env.CONTENTFUL_WEBHOOK_SECRET}`, { status: 401 });
   }
   const body = await request.json();
   console.log(body.data.rows[0].Id);
@@ -26,8 +26,15 @@ export const POST: APIRoute = async ({ request }) => {
   }
   const id = body.data.rows[0].Id;
   const test_response = `Revalidated entry with for section ${section} and for id ${id}`;
+  const type = body.type.split('.').pop();
   try {
-    await purgeCache({ tags: [`${section}`, `${section}-page-detail-${id}`] });
+    if (type == 'update') {
+      await purgeCache({ tags: [`${section}`, `${section}-page-detail-${id}`] });
+    } else if (type == 'insert') {
+      await purgeCache({ tags: [`${section}`, `${section}-page-detail-${id}`] });
+    } else {
+      return new Response(`Not update nor insert`, {status: 401})
+    }
     return new Response(`Revalidated entry for section ${section} and detail page ${section}-page-detail-${id}`, { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify({
