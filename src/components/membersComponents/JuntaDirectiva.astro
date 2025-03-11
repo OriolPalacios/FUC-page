@@ -1,8 +1,12 @@
 ---
 import JuntaDirectivaSwiper from "./swiperMembers/juntaDirectivaSwiper";
 import { getMembersJuntaDirectiva } from "@services/members";
+import {CacheHeaders, ONE_HOUR} from 'cdn-cache-control';
 
 const juntaDirectivaData = await getMembersJuntaDirectiva();
+
+const headers = new CacheHeaders({}, "netlify").swr(500).ttl(ONE_HOUR).tag(['junta-directiva']);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 
 <JuntaDirectivaSwiper boardMembers={juntaDirectivaData} client:visible />
