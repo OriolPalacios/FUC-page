@@ -1,5 +1,4 @@
 ---
-import { navigate } from "astro:transitions/client";
 import type { pageInfo } from "@customTypes/common";
 
 const { pageInfoData, currentSection } = Astro.props as { pageInfoData: pageInfo, currentSection: string };
@@ -25,7 +24,7 @@ const baseUrl = `/${currentSection}/page?page=`;
           </span>
         ) : null
       } 
-      <a href={baseUrl + prev} class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+      <a href={baseUrl + prev} data-astro-reload class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
         {prev}
       </a>
     </>

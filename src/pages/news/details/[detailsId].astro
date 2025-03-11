@@ -3,6 +3,7 @@ import { marked } from "marked";
 import Layout from "@layouts/Layout.astro";
 import { getNewsPerId } from "@services/news";
 import BackArrowButton from "@components/generalUtilities/BackArrowButton.astro";
+import { CacheHeaders } from 'cdn-cache-control';
 
 export interface Params {
   detailsId: string;
@@ -23,9 +24,8 @@ if (detailsId) {
 const { Id, Noticia, Contenido, Categoria, Imagenes, CreatedAt, Autor } = data;
 const ContenidoParsed = marked.parse(Contenido);
 
-Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
-Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, s-maxage=300, stale-while-revalidate=3500')
-Astro.response.headers.set("netlify-cache-tag", detailsId);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-detail-${Id}`]);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 
 <Layout title=`${Noticia}`>

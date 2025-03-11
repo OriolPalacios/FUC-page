@@ -6,6 +6,7 @@ import type { pageInfo } from "@customTypes/common";
 // services
 import { getDocumentsPerPage } from "@services/documents";
 import NavigationPagination from "@components/generalUtilities/NavigationPagination.astro";
+import { CacheHeaders } from "cdn-cache-control";
 
 const referer = Astro.request.headers.get("Referer") as string;
 const url = new URL(referer);
@@ -21,6 +22,9 @@ try {
 } catch (error) {
   return Astro.redirect("/documents/page/?page=1");
 }
+
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['documents', `documents-page-${page}`]);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 
 {
