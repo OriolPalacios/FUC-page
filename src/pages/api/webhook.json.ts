@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
   if (request.headers.get("X-Contentful-Webhook-Secret") !== import.meta.env.CONTENTFUL_WEBHOOK_SECRET) {
-    return new Response(`Unauthorized!, the actual response is ${import.meta.env.CONTENTFUL_WEBHOOK_SECRET} or ${process.env.CONTENTFUL_WEBHOOK_SECRET}`, { status: 401 });
+    return new Response(`Unauthorized!`, { status: 401 });
   }
   const body = await request.json();
   console.log(body.data.rows[0].Id);
