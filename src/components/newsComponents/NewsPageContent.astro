@@ -5,6 +5,8 @@ import { getNewsPerPage } from "@services/news";
 import type { NewsItem } from "@customTypes/news";
 import type { pageInfo } from "@customTypes/common";
 
+import { CacheHeaders } from "cdn-cache-control";
+
 const referer = Astro.request.headers.get("Referer") as string;
 const url = new URL(referer);
 const page = url.searchParams.get("page") || "1";
@@ -17,8 +19,11 @@ try {
   pages = data.list;
   pageInfoData = data.pageInfo;
 } catch (error) {
-  return Astro.redirect("/news/page/?page=1");
+  return Astro.redirect("/news/page/?page=1")``;
 }
+
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-${page}`]);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 
 {pages && (pages as NewsItem[]).map((newsItem) => <NewsCard {...newsItem} />)}
