@@ -7,28 +7,11 @@ export const prerender = true;
 // components
 import Layout from "@layouts/Layout.astro";
 import DocumentsPageContent from "@components/documentsComponents/DocumentsPageContent.astro";
-
-// import document types
-import type { Documents } from "@customTypes/documents";
-import type { pageInfo } from "@customTypes/common";
-
-// services
-import { getDocumentsPerPage } from "@services/documents";
 import DocumentsCardSkeleton from "@components/skeletons/DocumentsCardSkeleton.astro";
 import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 
-const page = Astro.params?.page ?? "1";
-const pageNumber = parseInt(page, 10);
-let data;
-let documents: Documents[];
-let pageInfoData: pageInfo;
-try {
-  data = await getDocumentsPerPage(pageNumber);
-  documents = data.list;
-  pageInfoData = data.pageInfo;
-} catch (error) {
-  return Astro.redirect("/documents/page/?page=1");
-}
+Astro.response.headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+Astro.response.headers.set("Netlify-Vary", "query=page");
 ---
 
 <Layout title="Documentos">

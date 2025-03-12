@@ -6,8 +6,9 @@ import NewsPageContent from "@components/newsComponents/NewsPageContent.astro";
 import NewsCardSkeleton from "@components/skeletons/NewsCardSkeleton.astro";
 import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 
+Astro.response.headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+Astro.response.headers.set("Netlify-Vary", "query=page");
 ---
-
 <Layout title="Noticias">
   <CommonHeaderTitle title="Noticias" />
   <div
