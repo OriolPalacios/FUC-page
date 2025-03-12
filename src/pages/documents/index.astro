@@ -1,17 +1,15 @@
 ---
-Astro.response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
-Astro.response.headers.set('Netlify-CDN-Cache-Control', 'public, durable, s-maxage=300, stale-while-revalidate=3500')
-Astro.response.headers.set('Netlify-vary','query=page');
 export const prerender = true;
-
+import { CacheHeaders } from "cdn-cache-control";
 // components
 import Layout from "@layouts/Layout.astro";
 import DocumentsPageContent from "@components/documentsComponents/DocumentsPageContent.astro";
 import DocumentsCardSkeleton from "@components/skeletons/DocumentsCardSkeleton.astro";
 import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 
-Astro.response.headers.set("Cache-Control", "public, max-age=0, must-revalidate");
-Astro.response.headers.set("Netlify-Vary", "query=page");
+const headers = new CacheHeaders({}, "netlify").swr(3000).ttl(3000).tag(['documents']);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
+Astro.response.headers.set('Netlify-Vary', 'query=page')
 ---
 
 <Layout title="Documentos">
