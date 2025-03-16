@@ -2,11 +2,22 @@ import { useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperNavButtons } from "@components/swiperUtilities/SwipperNavButtons";
 
+// import secretaries images
+import business from '@assets/business.png';
+import secretariaAsuntosAcademicos from '@assets/secretaries/secretaria_asuntos_academicos.png';
+import secretariaDeporteRecreacion from '@assets/secretaries/secretaria_deporte_recreacion.png';
+import secretariaEconomia from '@assets/secretaries/secretaria_economia.jpeg';
+import secretariaGenero from '@assets/secretaries/secretaria_genero.png';
+import secretariaInstruccion from '@assets/secretaries/secretaria_instruccion.png';
+import secretariaInvestigacionAsuntosTecnologicos from '@assets/secretaries/secretaria_investigacion_asuntos_tecnologicos.png';
+import secretariaLogistica from '@assets/secretaries/secretaria_logistica.jpeg';
+import secretariaMedioAmbiente from '@assets/secretaries/secretaria_medio_ambiente.png';
+import secretariaPrensa from '@assets/secretaries/secretaria_prensa.png';
+import secretariaProyeccionSocial from '@assets/secretaries/secretaria_proyeccion_social.jpeg';
+
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import '@styles/swiperOverrides.css'
-
-import business from '@assets/business.png';
 
 import { EffectCoverflow } from 'swiper/modules';
 import type { Members } from '@customTypes/members';
@@ -25,6 +36,27 @@ export default function SecretariaSwiper({
   const openModal = (secretaria: string) => {
     setActiveSecretaria(secretaria);
     setModalOpen(true);
+  };
+
+  const secretariasImages: Record<string, any> = {
+    "Secretaria De Economía": secretariaEconomia,
+    "Secretario De Actas Y Archivos": business,
+    "Secretaría De Asuntos Académicos": secretariaAsuntosAcademicos,
+    "Secretaría De Prensa, Propaganda Y Convocatoria": secretariaPrensa,
+    "Secretaría De Asistencia Social Y Bienestar Universitario": business,
+    "Secretaría De Cultura, Deporte Y Recreación": secretariaDeporteRecreacion,
+    "Secretaría De Proyección Social": secretariaProyeccionSocial,
+    "Secretaría De Logística": secretariaLogistica,
+    "Secretaría De Investigación Y Asuntos Tecnológicos": secretariaInvestigacionAsuntosTecnologicos,
+    "Secretaría De Defensa Estudiantil": business,
+    "Secretaría De Emprendimiento": business,
+    "Secretaría De Instrucción": secretariaInstruccion,
+    "Secretaría Anticorrupción": business,
+    "Secretaría De Género Y Diversidades": secretariaGenero,
+    "Secretaría Del Medio Ambiente": secretariaMedioAmbiente,
+    "Secretaría De Articulación Con Los Gremios": business,
+    "Secretaría De Relaciones Públicas E Interinstitucionales": business,
+    "Secretaría De Defensa De Estudiantes Con Discapacidad": business
   };
 
   const closeModal = () => {
@@ -54,7 +86,7 @@ export default function SecretariaSwiper({
             <SwiperSlide key={secretaria}>
               <div className="bg-red-800 h-[270px] md:w-[300px] lg:w-[400px] lg:h-[330px] md:px-2 mx-auto flex flex-col justify-evenly items-center rounded-xl">
                 <h4 className='text-center md:text-xl lg:text-2xl font-serif py-1 text-white'>{secretaria}</h4>
-                <img src={business.src} alt={secretaria} className="w-1/2 md:w-1/2 invert mx-auto" />
+                  <img src={secretariasImages[secretaria]?.src || business.src} alt={secretaria} className="w-[100px] md:w-1/2 mx-auto" />
                 <button
                   type="button"
                   onClick={() => openModal(secretaria)}
@@ -71,7 +103,13 @@ export default function SecretariaSwiper({
         </Swiper>
 
         {modalOpen && activeSecretaria && (
-          <DetailSecretariasSwiper activeSecretaria={activeSecretaria} actualMembers={secretariasData[activeSecretaria]} secretaryInfo={secretaryInfo[activeSecretaria]} closeModal={closeModal} />
+          <DetailSecretariasSwiper
+            activeSecretaria={activeSecretaria}
+            actualMembers={secretariasData[activeSecretaria]}
+            secretaryInfo={secretaryInfo[activeSecretaria]}
+            secretariaImage={secretariasImages[activeSecretaria]}
+            closeModal={closeModal} 
+          />
         )}
       </div>
     </>

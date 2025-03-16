@@ -3,6 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import business from '@assets/business.png';
+import user from '@assets/user.png';
+
 import { Navigation } from "swiper/modules";
 import type { Members } from "@customTypes/members";
 
@@ -10,20 +13,22 @@ export default function detailSecretariasSwiper({
   activeSecretaria,
   actualMembers,
   secretaryInfo,
+  secretariaImage,
   closeModal
 }: {
   activeSecretaria: string,
   actualMembers: Members[] | void,
   secretaryInfo: string[],
+  secretariaImage: ImageMetadata,
   closeModal: () => void
 }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-serif p-5">
       <div className="bg-white rounded w-full lg:w-[800px] shadow-xl shadow-gray-8 00 mx-auto rounded-xl overflow-hidden pb-2">
         <div className="header bg-red-900 flex flex-row items-center justify-center py-4 px-5 justify-between ">
-          <div className='logo-container w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-200'>
-
-          </div>
+            <div className='logo-container w-8 h-8 md:w-16 md:h-16 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center'>
+            <img src={secretariaImage?.src || business.src} alt={activeSecretaria} className="w-full" />
+            </div>
           <h3 className="text-lg md:text-2xl text-white font-bold text-center">{activeSecretaria}</h3>
           <div
             className="mr-2 w-6 h-6 relative cursor-pointer"
@@ -45,11 +50,11 @@ export default function detailSecretariasSwiper({
                 {actualMembers.map((member, index) => (
                   <SwiperSlide>
                     <div key={index} className="flex flex-col items-center">
-                      <div className="w-[150px] h-[200px] md:w-[200px] mb-10 md:mb-20">
-                        <img src={member.Foto[0].signedUrl} alt={`image of ${member.Nombre} ${member.Apellido}`} className="w-fit h-fit"/>
+                      <div className="w-[150px] h-[200px] md:w-[200px] md:mb-10 flex justify-center items-center">
+                        <img src={ member.Foto?.[0]?.signedUrl ?? user.src} alt={`image of ${member.Nombre} ${member.Apellido}`} className="w-full"/>
                       </div>
-                      <p className="text-sm">{member.Cargo}</p>
-                      <p className="text-lg md:text-xl font-bold">{member.Nombre} {member.Apellido}</p>
+                      <p className="text-center text-sm">{member.Cargo}</p>
+                      <p className="text-center text-lg md:text-xl font-bold">{member.Nombre} {member.Apellido}</p>
                       <p className="text-sm md:text-md w-1/2 italic text-center">{member.Contacto}</p>
                       <p className="text-sm md:text-md w-1/2 italic text-center">{member.Telefono}</p>
                     </div>

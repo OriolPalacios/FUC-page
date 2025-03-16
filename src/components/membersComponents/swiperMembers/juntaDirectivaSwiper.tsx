@@ -5,6 +5,8 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import '@styles/swiperOverrides.css';
 
+import user from '@assets/user.png';
+
 import { EffectCards } from 'swiper/modules';
 import type { Members } from "@customTypes/members";
 
@@ -27,7 +29,7 @@ export default function JuntaDirectivaSwiper({
               <h4 className='text-center md:text-xl lg:text-xl lg:italic font-serif text-white'>{member.Cargo}</h4>
               <h4 className='text-center md:text-2xl lg:text-2xl font-serif mb-2 text-white'>{member.Nombre} {member.Apellido}</h4>
               </div>
-              <img src={member.Foto[0].signedUrl} alt={member.Nombre} className="w-1/2 md:w-[200px] md:max-h-[250px] md:rounded-xl mx-auto object-contain" />
+              <img src={ member.Foto?.[0]?.signedUrl ?? user.src } alt={member.Nombre} className="w-1/2 md:w-[200px] md:max-h-[250px] md:rounded-xl mx-auto object-contain" />
             </div>
           </SwiperSlide>
         ))}
