@@ -6,7 +6,7 @@ const { isFirstPage, isLastPage, page, totalRows, pageSize } = pageInfoData;
 const totalPages = Math.ceil(totalRows / pageSize);
 const prev = page > 1 ? page - 1 : null;
 const next = page < totalPages ? page + 1 : null;
-const baseUrl = `/${currentSection}/page?page=`;
+const baseUrl = `/${currentSection}/?page=`;
 ---
 
 <div class="flex justify-center space-x-4 my-4">
