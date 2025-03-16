@@ -6,8 +6,11 @@ import Layout from "@layouts/Layout.astro";
 import NewsPageContent from "@components/newsComponents/NewsPageContent.astro";
 import NewsCardSkeleton from "@components/skeletons/NewsCardSkeleton.astro";
 import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
+import { CacheHeaders } from "cdn-cache-control";
 
-console.log('new ', Astro.request.headers)
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
+Astro.response.headers.set('Netlify-vary','query=page');
 --- 
 
 <Layout title="Noticias">
