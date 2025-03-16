@@ -1,12 +1,14 @@
 ---
-export const prerender = true; 
+export const prerender = false;
+
 // components
 import Layout from "@layouts/Layout.astro";
 import NewsPageContent from "@components/newsComponents/NewsPageContent.astro";
 import NewsCardSkeleton from "@components/skeletons/NewsCardSkeleton.astro";
 import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
 
----
+console.log('new ', Astro.request.headers)
+--- 
 
 <Layout title="Noticias">
   <CommonHeaderTitle title="Noticias" />
