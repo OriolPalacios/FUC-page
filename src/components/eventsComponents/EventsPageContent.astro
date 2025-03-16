@@ -21,7 +21,7 @@ try {
   return Astro.redirect("/events/page/1");
 }
 
-const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-${page}`]);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['events', `events-page-${page}`]);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 

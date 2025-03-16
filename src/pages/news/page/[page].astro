@@ -1,0 +1,45 @@
+---
+// components
+import Layout from "@layouts/Layout.astro";
+import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
+import NavigationPagination from "@components/generalUtilities/NavigationPagination.astro";
+import NewsCard from "@components/newsComponents/NewsCard.astro";
+
+// import news types
+import type { NewsItem } from "@customTypes/news";
+import type { pageInfo } from "@customTypes/common";
+
+// services
+import { getNewsPerPage } from "@services/news";
+import { CacheHeaders } from "cdn-cache-control";
+
+const page = Astro.params?.page ?? "1";
+const pageNumber = parseInt(page, 10);
+let data;
+let pages: NewsItem[];
+let pageInfoData: pageInfo;
+try {
+  data = await getNewsPerPage(pageNumber);
+  pages = data.list;
+  pageInfoData = data.pageInfo;
+} catch (error) {
+  return Astro.redirect("/news/page/1");
+}
+
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['news', `news-page-${page}`]);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
+--- 
+
+<Layout title="Noticias">
+  <CommonHeaderTitle title="Noticias" />
+  <div
+    class="cards-container flex flex-col gap-5 min-h-[500px] md:min-h-[800px] md:max-w-[700px] md:mx-auto w-full"
+  >
+    {pages && (pages as NewsItem[]).map((newsItem) => <NewsCard {...newsItem} />)}
+  </div>
+  {
+    pageInfoData && (
+      <NavigationPagination pageInfoData={pageInfoData} currentSection='news'/>
+    )
+  }
+</Layout>

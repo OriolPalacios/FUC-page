@@ -1,0 +1,49 @@
+--- 
+// components
+import Layout from "@layouts/Layout.astro";
+import CommonHeaderTitle from "@components/generalUtilities/CommonHeaderTitle.astro";
+import EventsCard from "@components/eventsComponents/EventsCard.astro";
+import NavigationPagination from "@components/generalUtilities/NavigationPagination.astro";
+
+// import types
+import type { pageInfo } from "@customTypes/common";
+import type { EventsItem } from "@customTypes/events";
+
+// import services
+import { getEventsPerPage } from "@services/events";
+import { CacheHeaders } from "cdn-cache-control";
+
+const page = Astro.params?.page ?? "1";
+const pageNumber = parseInt(page, 10);
+let data;
+let pages: EventsItem[];
+let pageInfoData: pageInfo;
+try {
+  data = await getEventsPerPage(pageNumber);
+  pages = data.list;
+  pageInfoData = data.pageInfo;
+} catch (error) {
+  return Astro.redirect("/events/page/1");
+}
+
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['events', `events-page-${page}`]);
+headers.forEach((value, key) => Astro.response.headers.set(key, value));
+---
+<Layout title="Eventos">
+  <CommonHeaderTitle title="Eventos" />
+  <div
+    class="flex flex-wrap justify-center gap-5 mb-16"
+  >
+    {
+      pages &&
+        (pages as EventsItem[]).map((eventsItem) => (
+          <EventsCard {...eventsItem} />
+        ))
+    }
+  </div>
+  {
+    pageInfoData && (
+      <NavigationPagination pageInfoData={pageInfoData} currentSection="events" />
+    )
+  }
+</Layout>
