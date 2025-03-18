@@ -19,7 +19,8 @@ export async function getNewsPerPage(page: number) {
       params: {
         limit: ITEMS_PER_PAGE,
         offset: (page - 1) * ITEMS_PER_PAGE,
-        fields: 'Id,Noticia,Resumen,Categoria,Imagenes,CreatedAt,Autor' // ADD the op to ask for the ordered rows, based on the date field
+        fields: 'Id,Noticia,Resumen,Categoria,Imagenes,CreatedAt,Autor',
+        sort: '-CreatedAt'
       }
     })
     return response.data;
