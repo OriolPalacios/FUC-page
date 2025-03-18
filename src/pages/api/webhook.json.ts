@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({ request }) => {
   const type = body.type.split('.').pop();
   try {
     if (type == 'update') {
-      await purgeCache({ tags: [`${section}-page-detail-${id}`] });
+      await purgeCache({ tags: [`${section}-page-detail-${id}`, `${section}`] });
     } else if (type == 'insert') {
       await purgeCache({ tags: [`${section}`, `${section}-page-detail-${id}`] });
     } else {

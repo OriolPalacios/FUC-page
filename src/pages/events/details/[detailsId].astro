@@ -46,6 +46,7 @@ headers.forEach((value, key) => Astro.response.headers.set(key, value));
       title="Event Image"
       width={width}
       height={height}
+      transition:name="image-id-event"
     />
     <div class="flex flex-row justify-center items-center gap-2">
       <span class="bg-amber-500 text-white w-fit text-sm font-bold p-1 rounded">{Ubicacion}</span>

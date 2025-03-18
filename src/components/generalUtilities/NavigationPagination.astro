@@ -11,7 +11,7 @@ const baseUrl = `/${currentSection}/page/`;
 
 <div class="flex justify-center space-x-4 my-4">
   {
-    <a id="first" href={baseUrl + '1'} data-astro-reload class={`px-4 py-2 text-white ${!isFirstPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded `}>
+    <a id="first" href={baseUrl + '1'} data-astro-prefetch class={`px-4 py-2 text-white ${!isFirstPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded `}>
       1
     </a>
   }
@@ -24,20 +24,20 @@ const baseUrl = `/${currentSection}/page/`;
           </span>
         ) : null
       } 
-      <a href={baseUrl + prev} data-astro-reload class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+      <a href={baseUrl + prev} data-astro-prefetch class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
         {prev}
       </a>
     </>
   ) : null}
   {page && !isFirstPage && !isLastPage ? (
-    <a href='#' data-astro-reload class="px-4 py-2 bg-gray-900 text-white rounded hover:bg-red-700 pointer-events-none">
+    <a href='#' data-astro-prefetch class="px-4 py-2 bg-gray-900 text-white rounded hover:bg-red-700 pointer-events-none">
       {page}
     </a>
   ) : null}
   {
     next && next !== totalPages && (
       <>
-        <a href={baseUrl + next} data-astro-reload class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
+        <a href={baseUrl + next} data-astro-prefetch class="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-700">
           {next}
         </a>
         {next < totalPages - 1 && (
@@ -50,7 +50,7 @@ const baseUrl = `/${currentSection}/page/`;
   }
   { totalPages !== 1 && 
     (
-      <a href={baseUrl + totalPages} data-astro-reload class={`px-4 py-2 text-white ${!isLastPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded hover:bg-red-700`}>
+      <a href={baseUrl + totalPages} data-astro-prefetch class={`px-4 py-2 text-white ${!isLastPage ? 'bg-red-800 hover:bg-red-700' : 'bg-gray-900'} rounded hover:bg-red-700`}>
         {totalPages}
       </a>
     )
