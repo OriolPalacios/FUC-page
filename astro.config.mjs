@@ -4,11 +4,13 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import netlify from '@astrojs/netlify';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   output: 'server',
   prefetch: true,
-  integrations: [react(), tailwind()],
-
+  integrations: [react(), tailwind(), sitemap()],
+  site: 'https://federacion-universitaria-cusco.netlify.app/',
   redirects: {
     '/home': '/',
     '/news/admin' : 'https://app.nocodb.com/#/nc/form/d6dc6d04-54a0-401e-a474-7228951f81f1',
