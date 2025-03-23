@@ -64,9 +64,18 @@ const { title, isHeroPage = false } = Astro.props;
   .tl-slide .tl-slide-background {
     filter: blur(3px);
   }
+  
   @media (max-width: 768px) {
     .tl-media-blockquote blockquote {
       font-size: medium !important;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .tl-slidenav-previous > .tl-slidenav-content-container {
+      left: 100px;
+    }
+    .tl-slidenav-next > .tl-slidenav-content-container{
+      right: 1px;
     }
   }
 </style>

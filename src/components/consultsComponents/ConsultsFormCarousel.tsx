@@ -61,7 +61,7 @@ export default function ConsultsFormCarousel() {
                   <textarea
                     name="contenidoConsulta"
                     maxLength={1000}
-                    className='h-[200px] max-h-[200px] lg:h-[300px] lg:w-3/4 lg:max-h-[400px] w-5/6 md:text-xl lg:text-2xl lg:p-5 bg-red-800/80 outline-none focus:outline-none border-0 focus:rounded-xl transition-all p-2 text-white placeholder-white/50 placeholder:italic'
+                    className='h-[200px] max-h-[200px] lg:w-3/4 lg:max-h-[400px] w-5/6 md:text-xl lg:text-2xl lg:p-5 bg-red-800/80 outline-none focus:outline-none border-0 focus:rounded-xl transition-all p-2 text-white placeholder-white/50 placeholder:italic'
                     placeholder='Escriba su consulta aquí'
                     required
                   />
