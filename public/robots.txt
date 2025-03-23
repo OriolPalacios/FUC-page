@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://federacion-universitaria-cusco.netlify.app//sitemap-index.xml
+Sitemap: https://federacion-universitaria-cusco.netlify.app/sitemap-index.xml
