@@ -38,7 +38,7 @@ export default function detailSecretariasSwiper({
             <div className="absolute w-full h-1 bg-white -rotate-45 top-1/2 left-0 transform -translate-y-1/2"></div>
           </div>
         </div>
-        <div className="content py-2 px-10">
+        <div className="content py-2 px-10 lg:h-[400px] xl:h-[500px] overflow-y-auto">
             <p className="text-center md:text-xl font-bold mb-5">Miembros de {activeSecretaria}</p>
           <div>
             {actualMembers ? (
@@ -50,7 +50,7 @@ export default function detailSecretariasSwiper({
                 {actualMembers.map((member, index) => (
                   <SwiperSlide>
                     <div key={index} className="flex flex-col items-center">
-                      <div className="w-[150px] h-[200px] md:w-[200px] md:mb-10 flex justify-center items-center">
+                      <div className="w-[150px] min-h-[200px] md:min-w-[200px] md:mb-10 flex justify-center items-center">
                         <img src={ member.Foto?.[0]?.signedUrl ?? user.src} alt={`image of ${member.Nombre} ${member.Apellido}`} className="w-full"/>
                       </div>
                       <p className="text-center text-sm">{member.Cargo}</p>
@@ -73,11 +73,11 @@ export default function detailSecretariasSwiper({
               <li className="md:text-lg" key='responsabilidad-3'>{secretaryInfo[2]}</li>
             </ul>
           </div>
-          <div className="fixed-contact mt-5 md:w-3/4 mx-auto">
+          {/* <div className="fixed-contact mt-5 md:w-3/4 mx-auto">
             <h4 className="text-lg font-bold mb-2 text-center md:text-gray-600">Contacto Fijo</h4>
             <p className="text-sm md:text-md md:text-center md:text-gray-600">Email: {secretaryInfo[3]}</p>
             <p className="text-sm md:text-md md:text-center md:text-gray-600">Teléfono: {secretaryInfo[4]}</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
