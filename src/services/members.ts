@@ -15,7 +15,8 @@ export async function getMembersJuntaDirectiva(): Promise<Members[]> {
     const response = await api.get(import.meta.env.MIEMBROS_V1_DEFAULT_VIEW + '/records', {
       params: {
         where: `(Area,eq,Junta Directiva)`,
-        fields: 'Nombre,Apellido,Cargo,Area,Telefono,Contacto,Foto'
+        fields: 'Nombre,Apellido,Cargo,Area,Telefono,Contacto,Foto',
+        limit: 1000
       }
     });
     return response.data.list as Members[];
