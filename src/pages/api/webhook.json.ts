@@ -7,6 +7,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
   const body = await request.json();
   console.log(body.data.rows[0].Id);
+
   let section = body.data.table_name.split('-')[0];
   switch (section) {
     case 'noticias':
@@ -28,6 +29,7 @@ export const POST: APIRoute = async ({ request }) => {
   const test_response = `Revalidated entry with for section ${section} and for id ${id}`;
   const type = body.type.split('.').pop();
   try {
+    if (body.version) throw new Error("Invalid versions");
     if (type == 'update') {
       await purgeCache({ tags: [`${section}-page-detail-${id}`, `${section}`] });
     } else if (type == 'insert') {
