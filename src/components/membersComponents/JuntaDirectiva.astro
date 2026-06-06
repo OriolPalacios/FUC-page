@@ -5,7 +5,7 @@ import {CacheHeaders } from 'cdn-cache-control';
 
 const juntaDirectivaData = await getMembersJuntaDirectiva();
 
-const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['junta-directiva']);
+const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['members', 'junta-directiva']);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
 ---
 
