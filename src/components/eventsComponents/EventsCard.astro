@@ -1,5 +1,6 @@
 ---
 import SocialLinksCard from "@components/generalUtilities/SocialLinksCard.astro";
+import escudoUnsaac from "@assets/escudoUnsaac.png";
 
 import type { EventsItem } from "@customTypes/events";
 
@@ -7,8 +8,10 @@ export interface Props extends EventsItem {}
 
 const { Id, Evento, Modalidad, Imagen, FechaEvento, Ubicacion } = Astro.props;
 const isFree = Modalidad === "Registro Previo";
-const width = Imagen[0].width;
-const height = Imagen[0].height;
+const eventImage = Imagen?.[0];
+const imageSrc = eventImage?.signedUrl ?? escudoUnsaac.src;
+const width = eventImage?.width ?? escudoUnsaac.width;
+const height = eventImage?.height ?? escudoUnsaac.height;
 ---
 
 <div
@@ -16,10 +19,10 @@ const height = Imagen[0].height;
 >
   <div class="relative h-1/2">
     <img
-      src={Imagen[0].signedUrl}
-      alt="Event Image"
+      src={imageSrc}
+      alt={Evento}
       class="h-full max-w-[300px] object-contain mx-auto"
-      title="Event Image"
+      title={Evento}
       width={width}
       height={height}
       transition:name="image-id-event"

@@ -18,10 +18,12 @@ export default function detailSecretariasSwiper({
 }: {
   activeSecretaria: string,
   actualMembers: Members[] | void,
-  secretaryInfo: string[],
-  secretariaImage: ImageMetadata,
+  secretaryInfo?: string[],
+  secretariaImage?: ImageMetadata,
   closeModal: () => void
 }) {
+  const responsibilities = secretaryInfo?.slice(0, 3).filter(Boolean) ?? [];
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 font-serif p-5">
       <div className="bg-white rounded w-full lg:w-[800px] shadow-xl shadow-gray-8 00 mx-auto rounded-xl overflow-hidden pb-2">
@@ -67,11 +69,17 @@ export default function detailSecretariasSwiper({
           </div>
           <div className="responsibilities mt-5 md:w-3/4 mx-auto">
             <h4 className="text-lg md:text-xl font-bold mb-2 md:text-center">Responsabilidades</h4>
-            <ul className="list-disc list-inside">
-              <li className="md:text-lg" key='responsabilidad-1'>{secretaryInfo[0]}</li>
-              <li className="md:text-lg" key='responsabilidad-2'>{secretaryInfo[1]}</li>
-              <li className="md:text-lg" key='responsabilidad-3'>{secretaryInfo[2]}</li>
-            </ul>
+            {responsibilities.length > 0 ? (
+              <ul className="list-disc list-inside">
+                {responsibilities.map((responsibility, index) => (
+                  <li className="md:text-lg" key={`responsabilidad-${index}`}>
+                    {responsibility}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="md:text-lg text-center text-gray-500">Responsabilidades por definir.</p>
+            )}
           </div>
           {/* <div className="fixed-contact mt-5 md:w-3/4 mx-auto">
             <h4 className="text-lg font-bold mb-2 text-center md:text-gray-600">Contacto Fijo</h4>

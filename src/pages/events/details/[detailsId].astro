@@ -6,6 +6,7 @@ import {CacheHeaders} from 'cdn-cache-control';
 import { marked } from "marked";
 import { getEventsPerId } from "@services/events";
 import SocialLinksCard from "@components/generalUtilities/SocialLinksCard.astro";
+import escudoUnsaac from "@assets/escudoUnsaac.png";
 
 export interface Params {
   detailsId: string;
@@ -19,14 +20,16 @@ if (detailsId) {
     data = await getEventsPerId(detailsId);
   } catch (error) {
     console.error(error);
-    return Astro.redirect("/noticias/events/1");
+    return Astro.redirect("/events/page/1");
   }
 }
 
 const { Id, Evento, Contenido, Imagen, Ubicacion, Modalidad } = data;
 const ContenidoParsed = marked.parse(Contenido);
-const width = Imagen[0].width;
-const height = Imagen[0].height;
+const eventImage = Imagen?.[0];
+const imageSrc = eventImage?.signedUrl ?? escudoUnsaac.src;
+const width = eventImage?.width ?? escudoUnsaac.width;
+const height = eventImage?.height ?? escudoUnsaac.height;
 
 const headers = new CacheHeaders({}, "netlify").swr(300).ttl(3000).tag(['events', `events-page-detail-${Id}`]);
 headers.forEach((value, key) => Astro.response.headers.set(key, value));
@@ -40,10 +43,10 @@ headers.forEach((value, key) => Astro.response.headers.set(key, value));
   >
     <h4 class="font-bold text-lg lg:text-xl font-serif text-center">{Evento}</h4>
     <img
-      src={Imagen[0].signedUrl}
-      alt="Event Image"
+      src={imageSrc}
+      alt={Evento}
       class="h-full max-w-[300px] object-contain mx-auto"
-      title="Event Image"
+      title={Evento}
       width={width}
       height={height}
       transition:name="image-id-event"
